@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import "@/styles/globals.css";
+import MainFooter from "@/components/shared/MainFooter";
 
 const vazir = Vazirmatn({ subsets: ["arabic"] });
 
@@ -15,8 +16,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${vazir.className} min-h-screen`}>{children}</body>
+    <html dir="rtl" lang="fa-IR">
+      <body className={`${vazir.className} min-h-screen`}>
+        {children}
+        <MainFooter />
+      </body>
     </html>
   );
 }
