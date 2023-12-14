@@ -17,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html dir="rtl" lang="fa-IR">
-      <body className={`${vazir.className} min-h-screen`}>
+      <body
+        className={`${vazir.className} min-h-screen flex flex-col items-stretch`}
+      >
         {children}
         <MainFooter />
       </body>

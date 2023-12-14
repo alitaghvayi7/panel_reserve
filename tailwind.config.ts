@@ -28,12 +28,14 @@ module.exports = {
           foreground: "hsl(var(--primary-foreground))",
           black: "rgba(49,49,49,1)",
           blue: "rgba(78,57,208,1)",
+          gray: "rgba(250,250,250,1)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
           green: "rgba(101,218,183,1)",
           gray: "rgba(238,238,238,1)",
+          blue: "rgba(20,76,124,1)",
         },
         third: {
           black: "rgba(125,125,125,1)",

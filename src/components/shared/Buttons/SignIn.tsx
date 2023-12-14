@@ -1,7 +1,8 @@
+import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 const SignInButton = ({
-  className = "bg-primary-blue rounded-lg text-[20px] font-medium text-white px-10 py-2",
+  className,
   children,
   ...props
 }: DetailedHTMLProps<
@@ -9,7 +10,13 @@ const SignInButton = ({
   HTMLButtonElement
 >) => {
   return (
-    <button className={`${className}`} {...props}>
+    <button
+      className={cn(
+        "bg-primary-blue rounded-lg text-[14px] lg:text-[14px] font-medium text-white px-4 py-2",
+        className
+      )}
+      {...props}
+    >
       {children}
     </button>
   );

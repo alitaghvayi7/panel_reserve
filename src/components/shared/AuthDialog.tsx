@@ -6,14 +6,15 @@ import {
   DialogOverlay,
   DialogPortal,
   DialogTrigger,
-} from "../UI/dialog";
-import SignInButton from "../shared/Buttons/SignIn";
+} from "../ui/dialog";
+import SignInButton from "./Buttons/SignIn";
 
 import OTPSignIn from "../Forms/Auth/OTPSignIn";
 import { useFormTypeStore } from "@/hooks/main-dialog-store";
 import ForgetPasswordForm from "../Forms/Auth/ForgetPassword";
 import AuthFormContainer from "../Forms/Auth/FormsContainer";
 import ConfirmOTPForm from "../Forms/Auth/ConfirmOTP";
+import { PERSON_ICON } from "../assets/SVG/Icons";
 
 const formComponents: {
   [key: string]: JSX.Element;
@@ -32,7 +33,12 @@ const AuthDialog = () => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <SignInButton>ورود</SignInButton>
+          <SignInButton className="flex items-center justify-center gap-2">
+            <span className="w-[14px] lg:w-[16px] h-[14px] lg:h-[16px]">
+              <PERSON_ICON />
+            </span>
+            <span>ورود/عضویت</span>
+          </SignInButton>
         </DialogTrigger>
         <DialogPortal>
           <DialogOverlay

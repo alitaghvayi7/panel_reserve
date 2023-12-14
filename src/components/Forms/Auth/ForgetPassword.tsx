@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogOverlay,
   DialogTitle,
-} from "@/components/UI/dialog";
+} from "@/components/ui/dialog";
 import FormButton from "@/components/shared/Buttons/FormButton";
 import { useFormTypeStore } from "@/hooks/main-dialog-store";
 import { zodResolver } from "@hookform/resolvers/zod";

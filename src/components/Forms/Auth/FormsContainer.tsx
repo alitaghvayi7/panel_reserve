@@ -5,7 +5,7 @@ import LoginWithUserNameAndPasswordForm from "./LoginWithUserNameAndPassword";
 import OTPSignIn from "./OTPSignIn";
 import SignUpForm from "./SignUp";
 import { cn } from "@/lib/utils";
-import { DialogClose, DialogHeader, DialogTitle } from "@/components/UI/dialog";
+import { DialogClose, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 
 const tabs = [

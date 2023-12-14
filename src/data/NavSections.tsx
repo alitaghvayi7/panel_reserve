@@ -11,7 +11,7 @@ export const NavSections: TNavSections[] = [
     id: 1,
     title: "پیگیری درخواست‌ها و شکایات",
     description: "تا کنون 200 شکایت از طریق سایت ثبت شده است",
-    link: "/requests",
+    link: "/follow-up-cases",
     icon: <PERSON_WITH_MARK_ICON />,
   },
   {

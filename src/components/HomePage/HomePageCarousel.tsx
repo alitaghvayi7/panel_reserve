@@ -5,19 +5,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "@/styles/swiper-styles.css";
 import { Pagination } from "swiper/modules";
-import SignInButton from "../shared/Buttons/SignIn";
+
 import Image from "next/image";
 import { AZADI_LOGO, IRAN_LOGO } from "../assets/SVG/Logos";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../UI/dialog";
-import AuthDialog from "./AuthDialog";
+
+import AuthDialog from "../shared/AuthDialog";
 const HomePageCarousel = () => {
   return (
     <div className="">
