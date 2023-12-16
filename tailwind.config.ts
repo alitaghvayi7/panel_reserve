@@ -36,10 +36,12 @@ module.exports = {
           green: "rgba(101,218,183,1)",
           gray: "rgba(238,238,238,1)",
           blue: "rgba(20,76,124,1)",
+          black: "rgba(83,83,83,1)",
         },
         third: {
           black: "rgba(125,125,125,1)",
           green: "rgba(189,239,224,1)",
+          gray: "rgba(217,217,217,1)",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -60,6 +62,7 @@ module.exports = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+          green: "rgba(248,255,253,1)",
         },
       },
       borderRadius: {

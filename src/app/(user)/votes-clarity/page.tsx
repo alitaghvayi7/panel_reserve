@@ -1,4 +1,4 @@
-import VotesClarityPageSearchForm from "@/components/VotesClarityPage/SearchForm";
+import VotesClarityPageSearchForm from "@/components/Forms/VotesClarityPageSearchForm";
 import HomeButton from "@/components/shared/Buttons/HomeButton";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { DataTable } from "./data-table";
