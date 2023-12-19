@@ -32,8 +32,8 @@ const AuthDialog = () => {
   return (
     <div>
       <Dialog>
-        <DialogTrigger asChild>
-          <SignInButton className="flex items-center justify-center gap-2">
+        <DialogTrigger className="h-full" asChild>
+          <SignInButton className="flex items-center justify-center gap-2 h-full">
             <span className="w-[14px] lg:w-[16px] h-[14px] lg:h-[16px]">
               <PERSON_ICON />
             </span>

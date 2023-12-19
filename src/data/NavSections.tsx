@@ -18,7 +18,7 @@ export const NavSections: TNavSections[] = [
     id: 2,
     title: "پیشنهادات و انتقادات",
     description: "منتظر نظرات و انتقادات شما هستیم",
-    link: "/suggestions",
+    link: "/tickets",
     icon: <COMMENT_ICON />,
   },
   {
@@ -32,7 +32,7 @@ export const NavSections: TNavSections[] = [
     id: 4,
     title: "شفافیت اموال",
     description: "هیچ چیزی از شما پنهان نیست!",
-    link: "/amval",
+    link: "/wealth",
     icon: <TAX_ICON />,
   },
 ];

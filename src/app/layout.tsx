@@ -20,7 +20,7 @@ export default function RootLayout({
       <body
         className={`${vazir.className} min-h-screen flex flex-col items-stretch`}
       >
-        {children}
+        <main>{children}</main>
         <MainFooter />
       </body>
     </html>

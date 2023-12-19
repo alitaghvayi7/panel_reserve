@@ -1,5 +1,6 @@
-import FollowUpCasesChatBox from "@/components/FollowUpCases/ChatBox";
+import FollowUpCasesChatBox from "@/components/FollowUpCasesPage/ChatBox";
 import FollowUpCasesSearchForm from "@/components/Forms/FollowUpCasesSearchForm";
+import AuthDialog from "@/components/shared/AuthDialog";
 import HomeButton from "@/components/shared/Buttons/HomeButton";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { Metadata } from "next";
@@ -21,8 +22,10 @@ const FollowUpCases = ({
           <div>
             <SectionTitle title="پیگیری درخواست‌ها و شکایات" />
           </div>
-          <div className="lg:hidden">
+          {/*  buttons */}
+          <div className="flex overflow-hidden lg:hidden gap-4 items-stretch">
             <HomeButton />
+            <AuthDialog />
           </div>
         </div>
         {/* form */}

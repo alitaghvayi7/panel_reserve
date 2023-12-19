@@ -50,7 +50,7 @@ const NewsCard = ({
       >
         {/* title */}
         <div
-          className={`text-[14px] lg:text-[18px] leading-none lg:leading-7 font-semibold text-primary-black ${
+          className={`text-[14px] lg:text-[18px] leading-[16px] lg:leading-7 font-semibold text-primary-black ${
             type === "vertical" ? "line-clamp-3" : "line-clamp-4"
           }`}
         >
@@ -59,7 +59,7 @@ const NewsCard = ({
         </div>
         {/* description */}
         {type === "vertical" ? (
-          <div className="text-[12px] lg:text-[16px] line-clamp-2 text-secendory-black font-medium leading-none lg:leading-5">
+          <div className="text-[12px] lg:text-[16px] line-clamp-2 text-secendory-black font-medium leading-[14px] lg:leading-5">
             تولیدکننده تا دیروز با دلار چهار هزار تومانی مواد اولیه می خرید حالا
             با دلار چهل هزار تومانی باید بخرد....
           </div>

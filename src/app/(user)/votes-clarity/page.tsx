@@ -3,6 +3,7 @@ import HomeButton from "@/components/shared/Buttons/HomeButton";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { DataTable } from "./data-table";
 import { VotesClarity, columns } from "./columns";
+import AuthDialog from "@/components/shared/AuthDialog";
 
 const data: VotesClarity[] = [
   {
@@ -55,8 +56,10 @@ const VotesClarity = ({
           <div>
             <SectionTitle title="لیست آرا" />
           </div>
-          <div className="lg:hidden">
+          {/*  buttons */}
+          <div className="flex overflow-hidden lg:hidden gap-4 items-stretch">
             <HomeButton />
+            <AuthDialog />
           </div>
         </div>
         <div className="mt-6 lg:mt-0">
