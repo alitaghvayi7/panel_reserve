@@ -57,7 +57,7 @@ const VotesClarity = ({
             <SectionTitle title="لیست آرا" />
           </div>
           {/*  buttons */}
-          <div className="flex overflow-hidden lg:hidden gap-4 items-stretch">
+          <div className="flex overflow-hidden lg:hidden gap-2 items-stretch">
             <HomeButton />
             <AuthDialog />
           </div>

@@ -29,7 +29,7 @@ const TicketsPage = ({
               <AuthDialog />
             </div>
           </div>
-          <div className="flex flex-col items-stretch gap-4">
+          <div className="flex flex-col items-stretch gap-2">
             <div className="text-[14px] lg:text-[16px] text-primary-black">
               لطفاً نوع درخواست خود را وارد نمائید.
             </div>
