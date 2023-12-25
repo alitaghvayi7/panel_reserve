@@ -1,4 +1,4 @@
-const baseUrl = "http://parliament.elmond.ir";
+export const baseUrl = "http://parliament.elmond.ir";
 
 const endPoints = {};
 

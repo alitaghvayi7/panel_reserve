@@ -1,17 +1,29 @@
 import Image from "next/image";
 import SendReplyButton from "../Buttons/SendReplyButton";
+import { convertToPersianNumber, parseDateTime } from "@/lib/utils";
 
-const ChatBoxAdminCard = () => {
+const ChatBoxAdminCard = ({
+  repliable,
+  messageData,
+  ticketID,
+  ticketTitle,
+}: {
+  repliable: boolean;
+  ticketID: number;
+  messageData: any;
+  ticketTitle: string;
+}) => {
+  const { dateString, timeString } = parseDateTime(messageData.CreatedAt);
   return (
     <div className="relative">
       <div className="flex items-center gap-4 relative">
         <div className="absolute -right-[6px] top-0 w-[14px] h-[14px] bg-card-green rounded-full border-2 border-third-black flex items-center justify-center">
           <div className="w-[8px] h-[8px] bg-green-700 rounded-full"></div>
         </div>
-        <div className="absolute right-[20px] lg:right-[-150px] -top-[2px] flex items-center gap-2 text-[14px] font-medium text-secondary-black">
-          <span>22:30</span>
+        <div className="absolute right-[20px] lg:right-[-130px] -top-[2px] flex items-center gap-2 text-[14px] font-medium text-secondary-black">
+          <span>{timeString}</span>
           <span className="w-[2px] h-[15px] bg-secondary-black mb-1"></span>
-          <span>1400/01/01</span>
+          <span>{dateString}</span>
         </div>
       </div>
       <div className="relative text-white leading-none mr-2 lg:mr-6">
@@ -28,16 +40,17 @@ const ChatBoxAdminCard = () => {
             </div>
           </div>
           <div className="text-[14px] text-primary-black font-medium">
-            موضوع: پیگیری شهرسازی
+            موضوع: {ticketTitle}
           </div>
           <p className="text-[12px] text-secondary-black leading-6">
-            شعار تبلیغاتی ابزاری برای تعامل است، اما نمی‌توان آن را بدون هیچ
-            اصول و قواعدی نوشت.
+            {messageData.Description}
           </p>
           {/* reply button */}
-          <div className="w-full flex">
-            <SendReplyButton />
-          </div>
+          {repliable ? (
+            <div className="w-full flex">
+              <SendReplyButton />
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

@@ -17,25 +17,59 @@ const schema = z.object({
 });
 
 const OTPSignInForm = () => {
-  const setFormType = useFormTypeStore((state) => state.setFormType);
-
+  const [setFormType, additionalData] = useFormTypeStore((state) => [
+    state.setFormType,
+    state.additionalData,
+  ]);
+  console.log(additionalData?.phoneNumber);
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
     register,
+    setError,
   } = useForm({
     resolver: zodResolver(schema),
+    defaultValues: {
+      phone: additionalData?.phoneNumber || "",
+      idNumber: "",
+    },
   });
 
-  const handleSubmitForm = handleSubmit((data) => {
-    console.log(data);
-    setFormType({
-      formType: "confirmOTP",
+  const handleSubmitForm = handleSubmit(async (data) => {
+    const req = await fetch(`/api/login/otp/send`, {
+      method: "POST",
+      next: { revalidate: 0 },
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone: data.phone,
+      }),
     });
+    const res = await req.json();
+    if (req.ok) {
+      console.log(req.status);
+      setFormType({
+        formType: "confirmOTP",
+        additionalData: {
+          phoneNumber: data.phone,
+        },
+      });
+    } else {
+      if (req.status === 422) {
+        setError("phone", {
+          message: res.message,
+        });
+        return;
+      }
+      setError("root", {
+        message: res.message,
+      });
+    }
   });
   return (
-    <div className="flex flex-col items-stretch gap-4 lg:gap-6">
+    <div className="">
       <form
         onSubmit={handleSubmitForm}
         className="flex flex-col items-stretch gap-2 mt-4 px-2"
@@ -52,7 +86,7 @@ const OTPSignInForm = () => {
             id="phone"
             {...register("phone")}
           />
-          <p className="h-2 text-red-400 text-[12px] leading-none">
+          <p className="text-red-400 text-[12px] leading-none">
             {errors.phone?.message?.toString()}
           </p>
         </div>
@@ -68,12 +102,19 @@ const OTPSignInForm = () => {
             id="idNumber"
             {...register("idNumber")}
           />
-          <p className="h-2 text-red-400 text-[12px] leading-none">
+          <p className="text-red-400 text-[12px] leading-none">
             {errors.idNumber?.message?.toString()}
           </p>
         </div>
-        <FormButton className="mt-2" type="submit">
-          ارسال کد اعتبار سنجی
+        <p className="text-red-400 text-[12px] leading-none">
+          {errors.root?.message?.toString()}
+        </p>
+        <FormButton
+          disabled={isSubmitting}
+          className="mt-2 disabled:opacity-40 disabled:cursor-not-allowed"
+          type="submit"
+        >
+          {isSubmitting ? "در حال ارسال..." : "ارسال کد اعتبار سنجی"}
         </FormButton>
       </form>
     </div>

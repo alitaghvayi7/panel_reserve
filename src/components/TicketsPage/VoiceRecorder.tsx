@@ -14,8 +14,10 @@ import { Slider } from "../ui/slider";
 const mimeType = "audio/webm";
 const VoiceRecorder = ({
   mediaRecorder,
+  audioBlobRef,
 }: {
   mediaRecorder: MutableRefObject<MediaRecorder | null>;
+  audioBlobRef: MutableRefObject<Blob | null>;
 }) => {
   // console.log(props.mediaRef);
   const [permission, setPermission] = useState(false);
@@ -84,6 +86,7 @@ const VoiceRecorder = ({
     mediaRecorder.current.onstop = () => {
       //creates a blob file from the audiochunks data
       const audioBlob = new Blob(audioChunks, { type: mimeType });
+      audioBlobRef.current = audioBlob;
       //creates a playable URL from the blob file.
       const audioUrl = URL.createObjectURL(audioBlob);
       setAudio(audioUrl);

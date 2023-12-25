@@ -8,8 +8,9 @@ import { useRef, useState } from "react";
 
 import { SelectSubject } from "./SelectSubject";
 import VoiceRecorder from "./VoiceRecorder";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import TicketResult from "../shared/TickectResult";
+import { useSession } from "next-auth/react";
 
 const schema = z.object({
   defendent: z
@@ -28,7 +29,12 @@ const schema = z.object({
 
 const Shekayat = () => {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const session = useSession();
   const [files, setFiles] = useState<any[]>([]);
+  const mediaRecorder = useRef<MediaRecorder | null>(null);
+  const audioBlobRef = useRef<Blob | null>(null);
+
   const {
     register,
     control,
@@ -39,20 +45,35 @@ const Shekayat = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
   const onSubmit = handleSubmit(async (data) => {
+    const TicketAttachment: any[] = [];
     const formData = new FormData();
-    formData.append("defendent", data.defendent);
-    formData.append("description", data.description);
-    formData.append("subject", JSON.stringify(title));
+    formData.append("Defendent", data.defendent);
+    formData.append("Type", "1");
+    formData.append("Description", data.description);
+    formData.append("Title", `${title.title} ${title.subTitle}`);
+    if (audioBlobRef.current) {
+      // formData.append("Voice", audioBlobRef.current);
+      TicketAttachment.push(audioBlobRef.current);
+    }
     files.forEach((file) => {
-      formData.append(file.name, file);
+      TicketAttachment.push(file);
     });
-    const req = await fetch(`/api/test`, {
+    // formData.append("TicketAttachment", TicketAttachment);
+    const req = await fetch(`/api/tickets/create`, {
       method: "POST",
+      next: { revalidate: 0 },
+      headers: {
+        // "Content-Type": "multipart/form-data;boundary=';'",
+        Authorization: `Bearer ${session.data?.user.token}`,
+      },
       body: formData,
     });
-    const res = await req.json();
-    console.log(res);
-    // console.log(formData);
+    if (req.ok) {
+      const res = await req.json();
+      router.replace(
+        `/tickets?form=complaints&result=success&trackingCode=${res.Data.TrackingCode}`
+      );
+    }
   });
   const filesRef = useRef<null | HTMLInputElement>(null);
 
@@ -61,7 +82,6 @@ const Shekayat = () => {
     title: "موضوع",
     subTitle: "",
   });
-  const mediaRecorder = useRef<MediaRecorder | null>(null);
   const ticketResult = searchParams.get("result");
   return (
     <div className={`border-t border-t-secondary-gray relative lg:px-6`}>
@@ -125,7 +145,10 @@ const Shekayat = () => {
                     {errors.description?.message?.toString()}
                   </p>
                   <div className="flex items-start justify-between lg:justify-start gap-2 mt-auto px-4 whitespace-nowrap">
-                    <VoiceRecorder mediaRecorder={mediaRecorder} />
+                    <VoiceRecorder
+                      mediaRecorder={mediaRecorder}
+                      audioBlobRef={audioBlobRef}
+                    />
                     <div className="flex flex-col items-stretch gap-2 cursor-pointer">
                       <div
                         onClick={() => {
@@ -139,6 +162,7 @@ const Shekayat = () => {
                           ref={filesRef}
                           className="hidden"
                           onChange={(e) => {
+                            // console.log(e.target?.files[0]);
                             if (!e.target.files) return;
                             setFiles(Array.from(e.target.files));
                           }}

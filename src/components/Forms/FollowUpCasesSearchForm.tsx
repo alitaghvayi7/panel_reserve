@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import FormButton from "../shared/Buttons/FormButton";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 const schema = z.object({
@@ -12,6 +12,7 @@ const schema = z.object({
     .regex(/^[0-9]+$/, "لطفاً کد پیگیری را درست وارد نمائید."),
 });
 const FollowUpCasesSearchForm = () => {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const {
     register,
@@ -21,6 +22,9 @@ const FollowUpCasesSearchForm = () => {
     setError,
   } = useForm({
     resolver: zodResolver(schema),
+    // defaultValues: {
+    //   code: searchParams.get("code") || "",
+    // },
   });
   const handleSubmitForm = handleSubmit((data) => {
     router.push(`/follow-up-cases?code=${data.code}`);
@@ -29,7 +33,7 @@ const FollowUpCasesSearchForm = () => {
   return (
     <form
       onSubmit={handleSubmitForm}
-      className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4"
+      className="flex flex-col lg:flex-row items-stretch lg:items-start gap-4"
     >
       <div className="flex flex-col items-stretch">
         <input
@@ -42,7 +46,7 @@ const FollowUpCasesSearchForm = () => {
           {errors.code?.message?.toString()}
         </p>
       </div>
-      <div className="lg:min-w-[170px]">
+      <div className="lg:min-w-[170px] h-full">
         <FormButton type="submit">جستجو</FormButton>
       </div>
     </form>

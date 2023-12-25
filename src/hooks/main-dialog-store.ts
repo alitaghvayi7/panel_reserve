@@ -1,6 +1,9 @@
 import { create } from "zustand";
 export type State = {
   formType: "normal" | "forgetPassword" | "confirmOTP";
+  additionalData?: {
+    phoneNumber?: string;
+  };
 };
 type Action = {
   setFormType: (formType: State) => void;
@@ -8,9 +11,15 @@ type Action = {
 
 export const useFormTypeStore = create<State & Action>((set) => ({
   formType: "normal",
-  setFormType({ formType }: State) {
-    set({
-      formType,
-    });
+  additionalData: {},
+  setFormType({ formType, additionalData }: State) {
+    additionalData
+      ? set({
+          formType,
+          additionalData,
+        })
+      : set({
+          formType,
+        });
   },
 }));

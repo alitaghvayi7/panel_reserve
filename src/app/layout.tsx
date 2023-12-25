@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import "@/styles/globals.css";
 import MainFooter from "@/components/shared/MainFooter";
+import ClietnSessionProvider from "@/components/shared/ClientSessionProvider";
 
 const vazir = Vazirmatn({ subsets: ["arabic"] });
 
@@ -20,8 +21,10 @@ export default function RootLayout({
       <body
         className={`${vazir.className} min-h-screen flex flex-col items-stretch justify-between`}
       >
-        <main>{children}</main>
-        <MainFooter />
+        <ClietnSessionProvider>
+          <main>{children}</main>
+          <MainFooter />
+        </ClietnSessionProvider>
       </body>
     </html>
   );

@@ -15,6 +15,9 @@ import ForgetPasswordForm from "../Forms/Auth/ForgetPassword";
 import AuthFormContainer from "../Forms/Auth/FormsContainer";
 import ConfirmOTPForm from "../Forms/Auth/ConfirmOTP";
 import { PERSON_ICON } from "../assets/SVG/Icons";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { convertToPersianNumber } from "@/lib/utils";
 
 const formComponents: {
   [key: string]: JSX.Element;
@@ -25,10 +28,26 @@ const formComponents: {
 };
 
 const AuthDialog = () => {
+  const session = useSession();
   const [formType, handleFormType] = useFormTypeStore((state) => [
     state.formType,
     state.setFormType,
   ]);
+  if (session.status === "authenticated") {
+    return (
+      <Link href={session.data.user.isAdmin ? "/panel" : "/account"}>
+        <SignInButton className="flex items-center justify-center gap-2 h-full leading-none">
+          <span className="w-[14px] lg:w-[16px] h-[14px] lg:h-[16px]">
+            <PERSON_ICON />
+          </span>
+          <span className="flex items-center justify-center text-[12px] lg:text-[14px] leading-none">
+            {session.data.user?.name?.trim() ||
+              convertToPersianNumber(session.data.user?.phone || "")}
+          </span>
+        </SignInButton>
+      </Link>
+    );
+  }
   return (
     <div>
       <Dialog>

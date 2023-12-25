@@ -22,17 +22,6 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-const isHeaderVisibleInMobile = (id: string) => {
-  switch (id) {
-    case "status":
-      return false;
-    case "date":
-      return false;
-    default:
-      return true;
-  }
-};
-
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -55,11 +44,7 @@ export function DataTable<TData, TValue>({
                   return (
                     <TableHead
                       key={header.id}
-                      className={`border border-secondary-gray ${
-                        isHeaderVisibleInMobile(header.id)
-                          ? ""
-                          : "hidden md:table-cell"
-                      }`}
+                      className={`border border-secondary-gray text-right whitespace-nowrap`}
                     >
                       {header.isPlaceholder
                         ? null
@@ -82,19 +67,15 @@ export function DataTable<TData, TValue>({
                     data-state={row.getIsSelected() && "selected"}
                     className={`${
                       row.index % 2 === 0
-                        ? "hover:bg-white"
-                        : "bg-primary-gray hover:bg-primary-gray"
+                        ? "bg-primary-gray hover:bg-primary-gray"
+                        : "hover:bg-white"
                     } `}
                   >
                     {row.getVisibleCells().map((cell) => {
                       return (
                         <TableCell
                           key={cell.id}
-                          className={`border border-secondary-gray ${
-                            isHeaderVisibleInMobile(cell.column.id)
-                              ? ""
-                              : "hidden md:table-cell"
-                          }`}
+                          className={`border border-secondary-gray`}
                         >
                           {flexRender(
                             cell.column.columnDef.cell,

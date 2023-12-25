@@ -1,8 +1,30 @@
-import Image from "next/image";
 import ChatBoxUserCard from "../shared/Cards/ChatBoxUserCard";
 import ChatBoxAdminCard from "../shared/Cards/ChatBoxAdminCard";
+import { getServerSession } from "next-auth";
+import { nextAuthOptions } from "@/types/Auth";
 
-const FollowUpCasesChatBox = ({ data }: { data: any }) => {
+const FollowUpCasesChatBox = async ({ data }: { data: any }) => {
+  const session = await getServerSession(nextAuthOptions);
+  console.log(data.code);
+  const req = await fetch(`http://localhost:3000/api/tickets/track`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${session?.user.token}`,
+    },
+    body: JSON.stringify({
+      code: data.code,
+    }),
+  });
+  const res = await req.json();
+  console.log(res);
+  if (req.status === 400) {
+    return (
+      <div className="text-center text-[16px] font-bold lg:text-[20px]">
+        {res.message}
+      </div>
+    );
+  }
   return (
     <div className={`border-t border-t-secondary-gray relative lg:px-6`}>
       {/* code box */}
@@ -28,8 +50,23 @@ const FollowUpCasesChatBox = ({ data }: { data: any }) => {
         className="flex flex-col items-stretch gap-6 min-h-[200px] mt-12 lg:mr-[15%]"
       >
         {/* card */}
-        <ChatBoxUserCard />
-        <ChatBoxAdminCard />
+        {/* <ChatBoxUserCard />
+        <ChatBoxAdminCard /> */}
+        {res.Data.TicketDetails.map((item: any, index: number) => {
+          if (res.Data.Status === 1 || res.Data.Status === 0) {
+            return index % 2 === 0 ? (
+              <ChatBoxUserCard key={item.Id} />
+            ) : (
+              <ChatBoxAdminCard
+                key={item.Id}
+                ticketTitle={res.Data.Title}
+                repliable={false}
+                messageData={item}
+                ticketID={res.Data.Id}
+              />
+            );
+          }
+        })}
       </div>
     </div>
   );

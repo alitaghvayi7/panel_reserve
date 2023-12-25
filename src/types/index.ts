@@ -5,3 +5,7 @@ export type TNavSections = {
   description: string;
   icon: JSX.Element;
 };
+
+export type TSearchParams = {
+  [key: string]: string;
+};

@@ -3,9 +3,10 @@ import AuthDialog from "@/components/shared/AuthDialog";
 import HomeButton from "@/components/shared/Buttons/HomeButton";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { suggestionsType } from "@/data/SuggestionsType";
-import { redirect } from "next/navigation";
+import { nextAuthOptions } from "@/types/Auth";
+import { getServerSession } from "next-auth";
 
-const TicketsPage = ({
+const TicketsPage = async ({
   searchParams,
 }: {
   searchParams: {
@@ -13,6 +14,13 @@ const TicketsPage = ({
   };
 }) => {
   const formType = searchParams.form;
+  const session = await getServerSession(nextAuthOptions);
+  if (!session?.user)
+    return (
+      <div className="flex items-center justify-center mx-auto mt-10">
+        لطفاً ابتدا وارد حساب کاربری خود شوید
+      </div>
+    );
 
   return (
     <div className="flex flex-col items-stretch lg:mt-10 lg:max-w-[1400px] lg:mx-auto">

@@ -39,7 +39,7 @@ const TicketResult = () => {
               <span>{trackingCode}</span>
             </div>
             <p className="text-[10px] lg:text-[12px] font-light text-primary-black">
-              جهت پیگیری درخواست خود شماره پیگیری را نزد خود نگه دارید.
+              جهت پیگیری درخواست، شماره پیگیری را نزد خود نگه دارید.
             </p>
           </>
         ) : (
