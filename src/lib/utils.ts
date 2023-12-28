@@ -1,3 +1,4 @@
+import { TFilterTicketDate } from "@/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -36,4 +37,16 @@ export const getPersianDate = () => {
     timeZone: "Asia/Tehran",
   }).format(date);
   return formatter;
+};
+
+export const parseRelativeDate = (str: TFilterTicketDate) => {
+  let today = new Date();
+  switch (str) {
+    case "today":
+      return today.toISOString();
+    case "lastWeek":
+      return new Date(today.setDate(today.getDate() - 7)).toISOString();
+    case "lastMonth":
+      return new Date(today.setDate(today.getDate() - 30)).toISOString();
+  }
 };

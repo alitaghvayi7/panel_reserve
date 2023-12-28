@@ -1,86 +1,84 @@
 import PanelTicketsMainNavbar from "@/components/panel/tickets/MainNavbar";
-import { getPersianDate } from "@/lib/utils";
-import { TSearchParams } from "@/types";
+import { getPersianDate, parseRelativeDate } from "@/lib/utils";
+import { TFilterTicketDate, TSearchParams } from "@/types";
 import { DataTable } from "./data-table";
 import { Tickets, columns } from "./columns";
+import PanelTicketsSearchAndFilter from "@/components/panel/tickets/SearchAndFilterForm";
+import { getServerSession } from "next-auth";
+import { nextAuthOptions } from "@/types/Auth";
+import { TicketStatus, TicketsHeaderType } from "@/data/Tickets";
+import PanelPagesLayout from "@/components/panel/PagesLayout";
 
-const data: Tickets[] = [
-  {
-    id: 13,
-    category: {
-      id: 1,
-      Title: "درد و دل",
-    },
-    createdAt: "2023-12-25T12:30:07.4926266Z",
-    user: {
-      family: "محمد",
-      id: 3,
-      name: "متقی",
-    },
-  },
-  {
-    id: 13,
-    category: {
-      id: 1,
-      Title: "درد و دل",
-    },
-    createdAt: "2023-12-25T12:30:07.4926266Z",
-    user: {
-      family: "محمد",
-      id: 3,
-      name: "متقی",
-    },
-  },
-  {
-    id: 13,
-    category: {
-      id: 1,
-      Title: "درد و دل",
-    },
-    createdAt: "2023-12-25T12:30:07.4926266Z",
-    user: {
-      family: "محمد",
-      id: 3,
-      name: "متقی",
-    },
-  },
-  {
-    id: 13,
-    category: {
-      id: 1,
-      Title: "درد و دل",
-    },
-    createdAt: "2023-12-25T12:30:07.4926266Z",
-    user: {
-      family: "محمد",
-      id: 3,
-      name: "متقی",
-    },
-  },
-];
+const getTickets = async ({
+  filters,
+  token,
+}: {
+  token: string;
+  filters: any;
+}): Promise<{
+  TotalRow: number;
+  Message: string | null;
+  Data: Tickets[];
+  Error: boolean;
+}> => {
+  const getTicketsList = await fetch(
+    `${process.env.WebUrl}/api/tickets/list/admin`,
+    {
+      method: "POST",
+      next: { revalidate: 60, tags: ["tickets"] },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ ...filters }),
+    }
+  );
+  if (!getTicketsList.ok) {
+    return {
+      Data: [],
+      Error: true,
+      Message: "خطایی رخ داده است",
+      TotalRow: 0,
+    };
+  }
+  const res = await getTicketsList.json();
+  return res;
+};
 
-const PanelTicketsPage = ({
+const PanelTicketsPage = async ({
   searchParams,
 }: {
   searchParams: TSearchParams;
 }) => {
-  const date = getPersianDate();
-  const tab = searchParams.tab;
+  const filters = {
+    Page: searchParams.page || 1,
+    PerPage: 10,
+    Title: searchParams.Title,
+    Status: TicketStatus[(searchParams.status as TicketsHeaderType) || "All"],
+    FromDate: parseRelativeDate(searchParams.FromDate as TFilterTicketDate),
+    SortBy: null,
+    IsDesc: true,
+    TicketCategoryId: searchParams.TicketCategoryId,
+  };
+
+  const session = await getServerSession(nextAuthOptions);
+  const tickets = await getTickets({
+    filters,
+    token: session?.user.token || "",
+  });
+
+  if (tickets.Error) {
+    return <div>خطایی رخ داده است</div>;
+  }
+
   return (
-    <div className="flex flex-col gap-6">
-      <header className="border-b border-third-green py-4 flex items-center justify-between relative">
-        <div>
-          <PanelTicketsMainNavbar searchParams={searchParams} />
-        </div>
-        <div className="flex items-center gap-2 text-[12px] font-medium text-third-black leading-none">
-          <span>تاریخ امروز</span>
-          <span>{date}</span>
-        </div>
-      </header>
-      <main>
-        <DataTable columns={columns} data={data} />
-      </main>
-    </div>
+    <PanelPagesLayout
+      navbar={<PanelTicketsMainNavbar searchParams={searchParams} />}
+    >
+      <div>
+        <PanelTicketsSearchAndFilter searchParams={searchParams} />
+      </div>
+      <DataTable columns={columns} data={tickets.Data} />
+    </PanelPagesLayout>
   );
 };
 

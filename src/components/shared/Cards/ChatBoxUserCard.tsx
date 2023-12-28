@@ -1,6 +1,16 @@
+import { parseDateTime } from "@/lib/utils";
 import Image from "next/image";
 
-const ChatBoxUserCard = () => {
+const ChatBoxUserCard = ({
+  messageData,
+  ticketID,
+  ticketTitle,
+}: {
+  ticketID: number;
+  messageData: any;
+  ticketTitle: string;
+}) => {
+  const { dateString, timeString } = parseDateTime(messageData.CreatedAt);
   return (
     <div className="relative">
       <div className="flex items-center gap-4 relative">
@@ -8,9 +18,9 @@ const ChatBoxUserCard = () => {
           <div className="w-[8px] h-[8px] bg-green-700 rounded-full"></div>
         </div>
         <div className="absolute right-[20px] lg:right-[-150px] -top-[2px] flex items-center gap-2 text-[14px] font-medium text-secondary-black">
-          <span>22:30</span>
+          <span>{timeString}</span>
           <span className="w-[2px] h-[15px] bg-secondary-black mb-1"></span>
-          <span>1400/01/01</span>
+          <span>{dateString}</span>
         </div>
       </div>
       <div className="relative text-white leading-none mr-2 lg:mr-6">
@@ -25,11 +35,10 @@ const ChatBoxUserCard = () => {
             </div>
           </div>
           <div className="text-[14px] text-primary-black font-medium">
-            موضوع: پیگیری شهرسازی
+            موضوع: {ticketTitle}
           </div>
           <p className="text-[12px] text-secondary-black leading-6">
-            شعار تبلیغاتی ابزاری برای تعامل است، اما نمی‌توان آن را بدون هیچ
-            اصول و قواعدی نوشت.
+            {messageData.Description}
           </p>
         </div>
       </div>

@@ -1,30 +1,32 @@
 // "use client";
 
+import { TicketsHeaderType } from "@/data/Tickets";
 import { TSearchParams } from "@/types";
 import Link from "next/link";
+
 type Tab = {
   id: number;
   name: string;
-  query: string;
+  query: TicketsHeaderType;
   pointerPosition: string;
 };
 const tabs: Tab[] = [
   {
     id: 1,
     name: "همه درخواست‌ها",
-    query: "all",
+    query: "All",
     pointerPosition: "right-[0px] w-[115px]",
   },
   {
     id: 2,
     name: "پاسخ داده شده",
-    query: "answered",
+    query: "AdminReply",
     pointerPosition: "right-[140px] w-[110px]",
   },
   {
     id: 3,
     name: "درخواست‌های جدید",
-    query: "new-requests",
+    query: "New",
     pointerPosition: "right-[270px] w-[150px]",
   },
 ];
@@ -34,7 +36,7 @@ const PanelTicketsMainNavbar = ({
 }: {
   searchParams: TSearchParams;
 }) => {
-  const activeTab = searchParams.type || tabs[0].query;
+  const activeTab = searchParams.status || tabs[0].query;
 
   return (
     <>
@@ -46,7 +48,7 @@ const PanelTicketsMainNavbar = ({
       <div className="flex items-center gap-10">
         {tabs.map((tab) => (
           <Link
-            href={`/panel/tickets?type=${tab.query}`}
+            href={`/panel/tickets?status=${tab.query}`}
             key={tab.id}
             className={`${
               activeTab === tab.query

@@ -44,7 +44,7 @@ export function DataTable<TData, TValue>({
                   return (
                     <TableHead
                       key={header.id}
-                      className={`border border-secondary-gray text-right whitespace-nowrap`}
+                      className={`text-[14px] text-secondary-black border border-secondary-gray text-right whitespace-nowrap`}
                     >
                       {header.isPlaceholder
                         ? null

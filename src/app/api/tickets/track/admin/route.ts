@@ -3,15 +3,14 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.json();
-  const remoteReq = await fetch(`${baseUrl}/api/ticket/get-by-tracking-code`, {
+  const remoteReq = await fetch(`${baseUrl}/api/ticket/get-by-admin`, {
     method: "POST",
-
     headers: {
       Authorization: req.headers.get("Authorization") || "",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      TrackingCode: reqBody.code,
+      Id: reqBody.id,
     }),
   });
   if (remoteReq.ok) {
@@ -27,6 +26,7 @@ export const POST = async (req: NextRequest) => {
     );
   } else {
     const remoteRes = await remoteReq.json();
+
     switch (remoteReq.status) {
       case 429: {
         return NextResponse.json(

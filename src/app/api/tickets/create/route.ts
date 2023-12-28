@@ -1,10 +1,9 @@
 import { baseUrl } from "@/services/main";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.formData();
-  //   console.log(reqBody);
-  //   console.log(reqBody.get("TicketAttachment"));
   const remoteReq = await fetch(`${baseUrl}/api/ticket/add`, {
     method: "POST",
     next: {
@@ -15,14 +14,13 @@ export const POST = async (req: NextRequest) => {
     },
     body: reqBody,
   });
-  //   return NextResponse.json({ message: "test" });
+
   if (remoteReq.ok) {
     const remoteRes = await remoteReq.json();
-
+    revalidateTag("tickets");
     return NextResponse.json(
       {
         ...remoteRes,
-        // message: "test",
       },
       {
         status: remoteReq.status,
@@ -30,7 +28,7 @@ export const POST = async (req: NextRequest) => {
       }
     );
   } else {
-    console.log(remoteReq.status);
+    const res = await remoteReq.json();
 
     switch (remoteReq.status) {
       case 429: {

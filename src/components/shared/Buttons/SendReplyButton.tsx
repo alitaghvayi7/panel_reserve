@@ -3,11 +3,11 @@
 import FollowUpCasesUserReplyForm from "@/components/Forms/FollowUpCaseUserReplyForm";
 import { useState } from "react";
 
-const SendReplyButton = () => {
+const SendReplyButton = ({ ticketId }: { ticketId: number }) => {
   const [isOpen, setIsOpen] = useState(false);
   return isOpen ? (
     <div className="border-t w-full">
-      <FollowUpCasesUserReplyForm />
+      <FollowUpCasesUserReplyForm ticketId={ticketId} />
     </div>
   ) : (
     <button

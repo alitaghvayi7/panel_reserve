@@ -48,7 +48,7 @@ const Shekayat = () => {
     const TicketAttachment: any[] = [];
     const formData = new FormData();
     formData.append("Defendent", data.defendent);
-    formData.append("Type", "1");
+    formData.append("TicketCategoryId", "1");
     formData.append("Description", data.description);
     formData.append("Title", `${title.title} ${title.subTitle}`);
     if (audioBlobRef.current) {
@@ -58,12 +58,12 @@ const Shekayat = () => {
     files.forEach((file) => {
       TicketAttachment.push(file);
     });
+
     // formData.append("TicketAttachment", TicketAttachment);
     const req = await fetch(`/api/tickets/create`, {
       method: "POST",
       next: { revalidate: 0 },
       headers: {
-        // "Content-Type": "multipart/form-data;boundary=';'",
         Authorization: `Bearer ${session.data?.user.token}`,
       },
       body: formData,

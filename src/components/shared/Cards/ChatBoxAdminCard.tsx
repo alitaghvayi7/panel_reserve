@@ -48,7 +48,7 @@ const ChatBoxAdminCard = ({
           {/* reply button */}
           {repliable ? (
             <div className="w-full flex">
-              <SendReplyButton />
+              <SendReplyButton ticketId={ticketID} />
             </div>
           ) : null}
         </div>

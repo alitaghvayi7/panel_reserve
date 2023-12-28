@@ -1,21 +1,13 @@
 import { baseUrl } from "@/services/main";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (req: NextRequest) => {
-  const reqBody = await req.json();
-  const remoteReq = await fetch(`${baseUrl}/api/ticket/get-by-tracking-code`, {
+export const GET = async (req: NextRequest) => {
+  const remoteReq = await fetch(`${baseUrl}/api/ticketcategory/getall`, {
     method: "POST",
-
-    headers: {
-      Authorization: req.headers.get("Authorization") || "",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      TrackingCode: reqBody.code,
-    }),
   });
   if (remoteReq.ok) {
     const remoteRes = await remoteReq.json();
+
     return NextResponse.json(
       {
         ...remoteRes,
@@ -26,7 +18,8 @@ export const POST = async (req: NextRequest) => {
       }
     );
   } else {
-    const remoteRes = await remoteReq.json();
+    const res = await remoteReq.json();
+
     switch (remoteReq.status) {
       case 429: {
         return NextResponse.json(
@@ -38,16 +31,6 @@ export const POST = async (req: NextRequest) => {
           }
         );
       }
-      case 400: {
-        return NextResponse.json(
-          {
-            message: "کد پیگیری اشتباه می‌باشد",
-          },
-          {
-            status: 400,
-          }
-        );
-      }
       case 500: {
         return NextResponse.json(
           {
@@ -55,16 +38,6 @@ export const POST = async (req: NextRequest) => {
           },
           {
             status: 500,
-          }
-        );
-      }
-      case 401: {
-        return NextResponse.json(
-          {
-            message: "نا معتبر",
-          },
-          {
-            status: 401,
           }
         );
       }

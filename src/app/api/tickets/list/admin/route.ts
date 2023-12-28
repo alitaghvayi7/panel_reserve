@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.json();
-  const remoteReq = await fetch(`${baseUrl}/api/ticket/get-by-tracking-code`, {
+  const remoteReq = await fetch(`${baseUrl}/api/ticket/getlist-by-admin`, {
     method: "POST",
 
     headers: {
@@ -11,7 +11,7 @@ export const POST = async (req: NextRequest) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      TrackingCode: reqBody.code,
+      ...reqBody,
     }),
   });
   if (remoteReq.ok) {
@@ -26,7 +26,6 @@ export const POST = async (req: NextRequest) => {
       }
     );
   } else {
-    const remoteRes = await remoteReq.json();
     switch (remoteReq.status) {
       case 429: {
         return NextResponse.json(
@@ -39,9 +38,10 @@ export const POST = async (req: NextRequest) => {
         );
       }
       case 400: {
+        const res = await remoteReq.json();
         return NextResponse.json(
           {
-            message: "کد پیگیری اشتباه می‌باشد",
+            message: res.Message,
           },
           {
             status: 400,

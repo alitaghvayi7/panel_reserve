@@ -19,11 +19,11 @@ export const PanelSidbarNav = [
     activeIcon: <MULTIPLE_PERSON_ICON fill="#114737" />,
     inactiveIcon: <MULTIPLE_PERSON_ICON />,
   },
-  {
-    id: 3,
-    name: "ارسال پیام",
-    link: "/panel/send-message",
-    activeIcon: <WRITE_MESSAGE_ICON fill="#114737" />,
-    inactiveIcon: <WRITE_MESSAGE_ICON />,
-  },
+  // {
+  //   id: 3,
+  //   name: "ارسال پیام",
+  //   link: "/panel/send-message",
+  //   activeIcon: <WRITE_MESSAGE_ICON fill="#114737" />,
+  //   inactiveIcon: <WRITE_MESSAGE_ICON />,
+  // },
 ];

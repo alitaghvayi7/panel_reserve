@@ -1,12 +1,16 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 const schema = z.object({
   description: z.string().min(1, { message: "* پاسخ الزامی است." }),
 });
-const FollowUpCasesUserReplyForm = () => {
+const FollowUpCasesUserReplyForm = ({ ticketId }: { ticketId: number }) => {
+  const router = useRouter();
+  const session = useSession();
   const {
     register,
     setError,
@@ -15,8 +19,26 @@ const FollowUpCasesUserReplyForm = () => {
   } = useForm({
     resolver: zodResolver(schema),
   });
-  const handleSubmitForm = handleSubmit((data) => {
-    console.log(data);
+  const handleSubmitForm = handleSubmit(async (data) => {
+    console.log(ticketId);
+    const req = await fetch("/api/tickets/reply/user", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${session.data?.user.token}`,
+      },
+      body: JSON.stringify({
+        id: ticketId,
+        description: data.description,
+      }),
+    });
+    const res = await req.json();
+    if (req.ok) {
+      router.refresh();
+    } else {
+      setError("description", {
+        message: res.message,
+      });
+    }
   });
   return (
     <form

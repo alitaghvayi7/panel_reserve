@@ -9,3 +9,5 @@ export type TNavSections = {
 export type TSearchParams = {
   [key: string]: string;
 };
+
+export type TFilterTicketDate = "today" | "lastWeek" | "lastMonth";

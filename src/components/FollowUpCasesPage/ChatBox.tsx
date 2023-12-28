@@ -5,8 +5,7 @@ import { nextAuthOptions } from "@/types/Auth";
 
 const FollowUpCasesChatBox = async ({ data }: { data: any }) => {
   const session = await getServerSession(nextAuthOptions);
-  console.log(data.code);
-  const req = await fetch(`http://localhost:3000/api/tickets/track`, {
+  const req = await fetch(`${process.env.WebUrl}/api/tickets/track`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +16,6 @@ const FollowUpCasesChatBox = async ({ data }: { data: any }) => {
     }),
   });
   const res = await req.json();
-  console.log(res);
   if (req.status === 400) {
     return (
       <div className="text-center text-[16px] font-bold lg:text-[20px]">
@@ -55,7 +53,12 @@ const FollowUpCasesChatBox = async ({ data }: { data: any }) => {
         {res.Data.TicketDetails.map((item: any, index: number) => {
           if (res.Data.Status === 1 || res.Data.Status === 0) {
             return index % 2 === 0 ? (
-              <ChatBoxUserCard key={item.Id} />
+              <ChatBoxUserCard
+                ticketTitle={res.Data.Title}
+                messageData={item}
+                ticketID={res.Data.Id}
+                key={item.Id}
+              />
             ) : (
               <ChatBoxAdminCard
                 key={item.Id}
@@ -63,6 +66,23 @@ const FollowUpCasesChatBox = async ({ data }: { data: any }) => {
                 repliable={false}
                 messageData={item}
                 ticketID={res.Data.Id}
+              />
+            );
+          } else if (res.Data.Status === 3) {
+            return index % 2 === 0 ? (
+              <ChatBoxAdminCard
+                key={item.Id}
+                ticketTitle={res.Data.Title}
+                repliable={index === 0 ? true : false}
+                messageData={item}
+                ticketID={res.Data.Id}
+              />
+            ) : (
+              <ChatBoxUserCard
+                ticketTitle={res.Data.Title}
+                messageData={item}
+                ticketID={res.Data.Id}
+                key={item.Id}
               />
             );
           }
