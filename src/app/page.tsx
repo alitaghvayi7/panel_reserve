@@ -3,7 +3,7 @@ import NewsCard from "@/components/shared/Cards/NewsCard";
 import WebSiteNavigationCard from "@/components/shared/Cards/WebSiteNavigationCard";
 import HomePageCarousel from "@/components/HomePage/HomePageCarousel";
 import SectionTitle from "@/components/shared/SectionTitle";
-import { NavSections } from "@/data/NavSections";
+import { CandidateInfoNav, NavSections } from "@/data/NavSections";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -26,6 +26,33 @@ export default async function Home() {
             />
           </div>
         ))}
+      </div>
+      {/* candidate info nav */}
+      <div className="flex flex-col items-stretch gap-8 mt-10">
+        <SectionTitle title="با دکتر پزشکیان بیشتر آشنا شوید" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-6 xl:gap-y-0">
+          {CandidateInfoNav.map((item) => {
+            return (
+              <Link
+                href={item.link}
+                key={item.id}
+                className="flex items-center justify-between px-8 py-6 rounded-2xl bg-[rgba(243,242,252,1)] leading-none place-self-stretch"
+              >
+                <div className="flex flex-col justify-center gap-6">
+                  <span className="text-[14px] xl:text-[16px] font-bold text-primary-black">
+                    {item.title}
+                  </span>
+                  <p className="text-[12px] text-secondary-black">
+                    {item.description}
+                  </p>
+                </div>
+                <div className="w-[70px] h-[65px] relative overflow-hidden">
+                  <Image src={item.image} alt="" fill />
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
       {/* last news */}
       <div className="flex flex-col items-stretch gap-8 mt-10">

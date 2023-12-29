@@ -103,7 +103,7 @@ const PanelFilterTickets = ({ menus }: { menus: TMenuItem[] }) => {
       <div className="h-full relative">
         <button
           onClick={() => setIsSelectMenuOpen((prev) => !prev)}
-          className="h-full flex items-center gap-2 bg-[rgba(246,246,246,1)] border-none rounded-lg px-4"
+          className="h-full flex items-center gap-2 bg-[rgba(246,246,246,1)] border-none rounded-lg px-4 py-2"
         >
           <span className="w-[16px] h-[16px]">
             <FILTER_ICON />

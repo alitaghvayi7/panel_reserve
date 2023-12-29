@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/types/Auth";
 import { TicketStatus, TicketsHeaderType } from "@/data/Tickets";
 import PanelPagesLayout from "@/components/panel/PagesLayout";
+import { TablePagination } from "@/components/shared/TablePagination";
 
 const getTickets = async ({
   filters,
@@ -78,6 +79,16 @@ const PanelTicketsPage = async ({
         <PanelTicketsSearchAndFilter searchParams={searchParams} />
       </div>
       <DataTable columns={columns} data={tickets.Data} />
+      {/* pagination */}
+      <div>
+        <TablePagination
+          route="/panel/tickets"
+          currentPage={+searchParams.page || 1}
+          perPage={10}
+          total={tickets.TotalRow}
+          searchParams={searchParams}
+        />
+      </div>
     </PanelPagesLayout>
   );
 };

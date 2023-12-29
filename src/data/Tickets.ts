@@ -7,4 +7,10 @@ export const TicketStatus = {
   All: null,
 };
 
+export const TicketSortBy = {
+  Id: 0,
+  CreatedAt: 1,
+  LastActivity: 2,
+};
+
 export type TicketsHeaderType = "All" | "AdminReply" | "New";

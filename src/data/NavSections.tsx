@@ -36,3 +36,27 @@ export const NavSections: TNavSections[] = [
     icon: <TAX_ICON />,
   },
 ];
+
+export const CandidateInfoNav = [
+  {
+    id: 1,
+    title: "جوایز و افتخارات ",
+    link: "/candidate-info/awards",
+    image: "/Images/awards.png",
+    description: "چه جایزه هایی استاد گرفته؟!",
+  },
+  {
+    id: 2,
+    title: "رزومه",
+    link: "/candidate-info/cv",
+    image: "/Images/rezume.png",
+    description: "رزومه استاد پزشکیان رو ببین!",
+  },
+  {
+    id: 3,
+    title: "برنامه و ایدئولوژی",
+    link: "/candidate-info/programs",
+    image: "/Images/programs.png",
+    description: "برنامه های اینده رو ببین",
+  },
+];

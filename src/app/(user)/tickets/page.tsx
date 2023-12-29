@@ -1,5 +1,3 @@
-import TicketsPageMainLayout from "@/components/TicketsPage/MainLayout";
-
 const TicketsPage = async ({
   searchParams,
 }: {
@@ -7,8 +5,6 @@ const TicketsPage = async ({
     [key: string]: string;
   };
 }) => {
-  // const session = await getServerSession(nextAuthOptions);
-
   return <></>;
 };
 
