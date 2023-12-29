@@ -35,14 +35,14 @@ const ChatBoxAdminCard = ({
             <div className="relative w-[24px] h-[24px] rounded-full overflow-hidden">
               <Image src={`/Images/person.png`} alt="" fill />
             </div>
-            <div className="text-[10px] font-light text-secondary-black">
+            <div className="text-[10px] lg:text-[14px] font-light text-secondary-black">
               پاسخ دکتر پزشکیان نماینده مجلس
             </div>
           </div>
-          <div className="text-[14px] text-primary-black font-medium">
+          <div className="text-[14px] lg:text-[20px] text-primary-black font-medium">
             موضوع: {ticketTitle}
           </div>
-          <p className="text-[12px] text-secondary-black leading-6">
+          <p className="text-[12px] lg:text-[16px] text-secondary-black leading-6">
             {messageData.Description}
           </p>
           {/* reply button */}

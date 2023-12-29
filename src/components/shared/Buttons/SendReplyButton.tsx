@@ -14,7 +14,7 @@ const SendReplyButton = ({ ticketId }: { ticketId: number }) => {
       onClick={() => {
         setIsOpen(true);
       }}
-      className="bg-third-green px-2 py-4 rounded-sm text-[8px] text-primary-black mr-auto"
+      className="bg-third-green px-2 py-4 rounded-sm text-[8px] lg:text-[14px] text-primary-black mr-auto"
     >
       ارسال پاسخ
     </button>

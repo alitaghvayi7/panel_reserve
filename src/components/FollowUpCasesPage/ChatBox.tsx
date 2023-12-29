@@ -27,7 +27,7 @@ const FollowUpCasesChatBox = async ({ data }: { data: any }) => {
     <div className={`border-t border-t-secondary-gray relative lg:px-6`}>
       {/* code box */}
       <div
-        className={`flex items-center justify-center gap-2 whitespace-nowrap absolute -top-[10px] left-1/2 -translate-x-1/2 bg-white px-6 text-[14px] font-medium text-primary-black`}
+        className={`flex items-center justify-center gap-2 whitespace-nowrap absolute -top-[10px] left-1/2 -translate-x-1/2 bg-white px-6 text-[14px] lg:text-[20px] font-medium text-primary-black`}
       >
         <span>کد پیگیری:</span>
         <span>

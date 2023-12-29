@@ -7,31 +7,32 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
-const SuggestionsPageMainSelectBox = () => {
+const SuggestionsPageMainSelectBox = ({ categories }: { categories: any }) => {
   const router = useRouter();
-  const params = useSearchParams();
-  const defaultValue = params?.get("form");
+  const params = useParams();
+
   return (
     <Select
-      defaultValue={defaultValue || ""}
       onValueChange={(value) => {
-        router.push(`/tickets?form=${value}`);
+        const [id, title] = value.split("/");
+        router.push(`/tickets/${id}`);
+        return title;
       }}
     >
       <SelectTrigger className="w-full lg:min-w-[320px] text-[12px] lg:text-[14px] font-light rounded-lg text-third-black">
         <SelectValue placeholder="انتخاب" />
       </SelectTrigger>
       <SelectContent>
-        {suggestionsType.map((item) => {
+        {categories.Data.map((item: { Id: number; Title: string }) => {
           return (
             <SelectItem
               className="py-2"
-              key={item.id}
-              value={item.link.toLocaleLowerCase()}
+              key={item.Id}
+              value={`${item.Id}/${item.Title}`}
             >
-              {item.name}
+              {item.Title}
             </SelectItem>
           );
         })}

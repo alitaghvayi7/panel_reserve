@@ -1,5 +1,12 @@
 import Shekayat from "@/components/TicketsPage/Shekayat";
 
+export const questionTypes = {
+  0: "radio",
+  1: "checkbox",
+  2: "text",
+  3: "file",
+};
+
 export const suggestionsType = [
   {
     id: 1,

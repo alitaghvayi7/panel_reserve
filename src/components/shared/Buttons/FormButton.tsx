@@ -12,7 +12,7 @@ const FormButton = ({
   return (
     <button
       className={cn(
-        "bg-blue-green w-full h-full rounded-lg text-[12px] lg:text-[16px] font-medium text-white px-10 py-2 lg:py-2",
+        "bg-blue-green w-full h-full rounded-lg text-[12px] lg:text-[16px] font-medium text-white px-10 py-2 lg:py-2 whitespace-nowrap",
         className
       )}
       {...props}

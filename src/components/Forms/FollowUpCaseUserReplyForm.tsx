@@ -15,7 +15,7 @@ const FollowUpCasesUserReplyForm = ({ ticketId }: { ticketId: number }) => {
     register,
     setError,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(schema),
   });
@@ -47,7 +47,7 @@ const FollowUpCasesUserReplyForm = ({ ticketId }: { ticketId: number }) => {
     >
       <div className="flex flex-col items-stretch">
         <textarea
-          className="w-full max-h-[200px] placeholder:text-third-black placeholder:text-[10px] text-[10px] text-black outline-none p-4 border border-secondary-gray rounded-sm"
+          className="w-full max-h-[200px] placeholder:text-third-black text-[10px] lg:text-[14px] text-black outline-none p-4 border border-secondary-gray rounded-sm"
           placeholder="پاسخ خود را بنویسید."
           {...register("description")}
         />
@@ -57,9 +57,10 @@ const FollowUpCasesUserReplyForm = ({ ticketId }: { ticketId: number }) => {
       </div>
       <button
         type="submit"
-        className="bg-third-green px-4 py-4 rounded-sm text-[10px] text-primary-black mr-auto"
+        disabled={isSubmitting}
+        className="bg-third-green px-4 py-4 rounded-sm text-[10px] lg:text-[14px] text-primary-black mr-auto disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
       >
-        ارسال
+        {isSubmitting ? "در حال ارسال..." : "ارسال"}
       </button>
     </form>
   );

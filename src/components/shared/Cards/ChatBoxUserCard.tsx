@@ -30,14 +30,14 @@ const ChatBoxUserCard = ({
         <div className="flex flex-col items-stretch max-w-[840px] gap-4 rounded-md rounded-tr-none p-4 bg-white mt-8 lg:mt-0 mr-8 border">
           <div className="flex items-center gap-2">
             <div className="w-[2px] h-[2px] bg-primary-black rounded-full overflow-hidden"></div>
-            <div className="text-[10px] font-light text-secondary-black">
+            <div className="text-[10px] lg:text-[14px] font-light text-secondary-black">
               شما ارسال کردید
             </div>
           </div>
-          <div className="text-[14px] text-primary-black font-medium">
+          <div className="text-[14px] lg:text-[20px] text-primary-black font-medium">
             موضوع: {ticketTitle}
           </div>
-          <p className="text-[12px] text-secondary-black leading-6">
+          <p className="text-[12px] lg:text-[16px] text-secondary-black leading-6">
             {messageData.Description}
           </p>
         </div>

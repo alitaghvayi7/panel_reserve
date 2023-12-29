@@ -1,58 +1,17 @@
-import SuggestionsPageMainSelectBox from "@/components/TicketsPage/MainSelectBox";
-import AuthDialog from "@/components/shared/AuthDialog";
-import HomeButton from "@/components/shared/Buttons/HomeButton";
-import SectionTitle from "@/components/shared/SectionTitle";
-import { suggestionsType } from "@/data/SuggestionsType";
-import { nextAuthOptions } from "@/types/Auth";
-import { getServerSession } from "next-auth";
+import TicketsPageMainLayout from "@/components/TicketsPage/MainLayout";
 
 const TicketsPage = async ({
   searchParams,
+  children,
 }: {
   searchParams: {
     [key: string]: string;
   };
+  children?: React.ReactNode;
 }) => {
-  const formType = searchParams.form;
-  const session = await getServerSession(nextAuthOptions);
-  // if (!session?.user)
-  //   return (
-  //     <div className="flex items-center justify-center mx-auto mt-10">
-  //       لطفاً ابتدا وارد حساب کاربری خود شوید
-  //     </div>
-  //   );
+  // const session = await getServerSession(nextAuthOptions);
 
-  return (
-    <div className="flex flex-col items-stretch lg:mt-10 lg:max-w-[1400px] lg:mx-auto">
-      <div className="flex flex-col gap-10 lg:gap-20">
-        <div className="flex flex-col lg:items-start lg:flex-row gap-6 lg:gap-[5rem]">
-          {/* title */}
-          <div className="flex items-center justify-between gap-6">
-            <div>
-              <SectionTitle title="پیشنهادات و انتقادات" />
-            </div>
-            {/*  buttons */}
-            <div className="flex overflow-hidden lg:hidden gap-4 items-stretch">
-              <HomeButton />
-              <AuthDialog />
-            </div>
-          </div>
-          <div className="flex flex-col items-stretch gap-2">
-            <div className="text-[14px] lg:text-[16px] text-primary-black">
-              لطفاً نوع درخواست خود را وارد نمائید.
-            </div>
-            <div>
-              <SuggestionsPageMainSelectBox />
-            </div>
-          </div>
-        </div>
-        <div className="mt-4">
-          {formType &&
-            suggestionsType.find((item) => item.link === formType)?.component}
-        </div>
-      </div>
-    </div>
-  );
+  return <></>;
 };
 
 export default TicketsPage;
