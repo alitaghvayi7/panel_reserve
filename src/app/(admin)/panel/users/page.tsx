@@ -22,7 +22,7 @@ const getUsers = async ({
   Error: boolean;
 }> => {
   const getUsersList = await fetch(
-    `${process.env.WebUrl}/api/users/list/admin`,
+    `${process.env.WebUrl}/api/user/list/admin`,
     {
       method: "POST",
       next: { revalidate: 60, tags: ["usersList"] },

@@ -10,8 +10,6 @@ import {
 import { EDIT_ICON } from "@/components/assets/SVG/Icons";
 import FormButton from "@/components/shared/Buttons/FormButton";
 import { useFormTypeStore } from "@/hooks/main-dialog-store";
-import { zodResolver } from "@hookform/resolvers/zod";
-
 import { X } from "lucide-react";
 import {
   ChangeEvent,
@@ -21,15 +19,15 @@ import {
   useRef,
   useState,
 } from "react";
-
 import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
 const otpLength = 4;
+
 const ConfirmOTPForm = () => {
+  const route = usePathname();
   const otpBoxReference = useRef<null | HTMLInputElement>(null);
   const submitButtonRef = useRef<null | HTMLButtonElement>(null);
-  const route = usePathname();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState(new Array(otpLength).fill(""));
@@ -74,8 +72,6 @@ const ConfirmOTPForm = () => {
         } else if (req.status === 429) {
           setError("کد وارد شده منقضی شده است. لطفا مجدد درخواست دهید");
         }
-        // console.log(req.status);
-        // console.log(res);
       }
     }
     setLoading(false);

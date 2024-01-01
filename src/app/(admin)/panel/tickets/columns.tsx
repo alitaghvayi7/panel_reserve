@@ -45,7 +45,7 @@ export const columns: ColumnDef<Tickets>[] = [
       return (
         <div className="flex flex-col leading-none gap-2">
           <div className="text-[14px] font-light text-primary-black">
-            {`${user?.Family || ""} ${user?.Name || ""}`.trim() || "بدون نام"}
+            {`${user?.Name || ""} ${user?.Family || ""}`.trim() || "بدون نام"}
           </div>
           <div className="flex items-center gap-2">
             <span className="p-[1px] border-[1px] border-[#CCCCCC] rounded-[4px]">

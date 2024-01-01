@@ -36,7 +36,7 @@ const AuthDialog = () => {
   if (session.status === "authenticated") {
     return (
       <Link href={session.data.user.isAdmin ? "/panel" : "/account"}>
-        <SignInButton className="flex items-center justify-center gap-2 h-full leading-none">
+        <SignInButton className="flex items-center justify-center gap-2 h-full leading-none whitespace-nowrap">
           <span className="w-[14px] lg:w-[16px] h-[14px] lg:h-[16px]">
             <PERSON_ICON />
           </span>
@@ -52,7 +52,7 @@ const AuthDialog = () => {
     <div>
       <Dialog>
         <DialogTrigger className="h-full" asChild>
-          <SignInButton className="flex items-center justify-center gap-2 h-full">
+          <SignInButton className="flex items-center justify-center gap-2 h-full whitespace-nowrap">
             <span className="w-[14px] lg:w-[16px] h-[14px] lg:h-[16px]">
               <PERSON_ICON />
             </span>

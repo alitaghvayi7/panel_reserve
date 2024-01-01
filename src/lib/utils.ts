@@ -19,12 +19,13 @@ export const parseDateTime = (dateTimeString: string) => {
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
+    weekday: "long",
     hour12: false,
     timeZone: "Asia/Tehran",
   });
-  const [dateString, timeString] = formatter.format(date).split(",");
+  const [weekday, dateString, timeString] = formatter.format(date).split(" ");
 
-  return { dateString, timeString };
+  return { dateString: dateString.slice(0, -1), timeString, weekday };
 };
 
 export const getPersianDate = () => {
