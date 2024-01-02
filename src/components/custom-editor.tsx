@@ -1,12 +1,17 @@
 "use client";
+import React, { useEffect, useRef, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build";
-import { ClassAttributes, LegacyRef, useRef } from "react";
+
+// const CustomEditor = dynamic(
+//   () => {
+//     return import("@/components/custom-editor");
+//   },
+//   { ssr: false }
+// );
 
 const editorConfiguration = {
   toolbar: [
-    "heading",
-    "|",
     "bold",
     "italic",
     "link",
@@ -17,7 +22,6 @@ const editorConfiguration = {
     "indent",
     "|",
     "imageUpload",
-    "blockQuote",
     "insertTable",
     "mediaEmbed",
     "undo",
@@ -25,42 +29,25 @@ const editorConfiguration = {
   ],
 };
 
-function CustomEditor({ initialData }: { initialData?: string }) {
-  return (
-    <CKEditor
-      editor={Editor}
-      config={{
-        toolbar: [
-          "heading",
-          "|",
-          "bold",
-          "italic",
-          "link",
-          "bulletedList",
-          "numberedList",
-          "|",
-          "outdent",
-          "indent",
-          "|",
-          "imageUpload",
-          "blockQuote",
-          "insertTable",
-          "mediaEmbed",
-          "undo",
-          "redo",
-        ],
-        image: {
-          upload: {
-            types: ["image/png", "image/jpeg"],
-          },
-        },
-      }}
-      onChange={(event, editor) => {
-        const data = editor.getData();
+function CustomEditor({ onChange }: { onChange: (data: string) => void }) {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    if (isMounted) return;
+    setIsMounted(true);
+  }, [isMounted]);
 
-        console.log({ event, editor, data });
-      }}
-    />
+  return (
+    <div className="min-h-[250px]">
+      <CKEditor
+        editor={Editor}
+        config={editorConfiguration}
+        data={""}
+        onChange={(event, editor) => {
+          const data = editor.getData();
+          onChange(data);
+        }}
+      />
+    </div>
   );
 }
 

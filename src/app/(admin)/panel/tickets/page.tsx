@@ -9,6 +9,7 @@ import { nextAuthOptions } from "@/types/Auth";
 import { TicketStatus, TicketsHeaderType } from "@/data/Tickets";
 import PanelPagesLayout from "@/components/panel/PagesLayout";
 import { TablePagination } from "@/components/shared/TablePagination";
+import { Suspense } from "react";
 
 const getTickets = async ({
   filters,

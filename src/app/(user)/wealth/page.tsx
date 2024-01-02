@@ -1,6 +1,5 @@
 import PayCheck from "@/components/WealthPage/PayCheck";
 import SelectMonth from "@/components/WealthPage/SelectMonth";
-
 import AuthDialog from "@/components/shared/AuthDialog";
 import HomeButton from "@/components/shared/Buttons/HomeButton";
 import SectionTitle from "@/components/shared/SectionTitle";
@@ -26,18 +25,18 @@ const WealthPage = ({
             <AuthDialog />
           </div>
         </div>
-      </div>
-      {/* main content */}
-      <main className="flex flex-col items-stretch gap-12">
         <div className="flex flex-col items-stretch gap-6">
           <p>
             برای دیدن فیش حقوقی ماه های پیش دکتر پزشکیان از گزینه زیر اقدام
             کنید.
           </p>
-          <div>
+          <div className="max-w-[250px]">
             <SelectMonth />
           </div>
         </div>
+      </div>
+      {/* main content */}
+      <main className="flex flex-col items-stretch gap-12">
         <div>
           {searchParams.month ? (
             +searchParams.month > 0 && +searchParams.month < 13 ? (

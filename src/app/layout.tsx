@@ -3,6 +3,7 @@ import { Vazirmatn } from "next/font/google";
 import "@/styles/globals.css";
 import MainFooter from "@/components/shared/MainFooter";
 import ClietnSessionProvider from "@/components/shared/ClientSessionProvider";
+import NextTopLoader from "nextjs-toploader";
 
 const vazir = Vazirmatn({ subsets: ["arabic"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body
         className={`${vazir.className} min-h-screen flex flex-col items-stretch justify-between`}
       >
+        <NextTopLoader zIndex={99999} showSpinner={false} color="#65DAB7" />
         <ClietnSessionProvider>
           <main>{children}</main>
           <MainFooter />

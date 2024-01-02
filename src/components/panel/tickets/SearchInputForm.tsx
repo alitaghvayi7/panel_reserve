@@ -45,7 +45,7 @@ const SearchInputForm = () => {
 
     reset();
 
-    router.replace(`/panel/tickets?${newParams.toString()}`);
+    router.push(`/panel/tickets?${newParams.toString()}`);
   });
   return (
     <form onSubmit={handleFormSubmit} className="flex flex-col gap-2">

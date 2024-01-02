@@ -8,9 +8,8 @@
   "main": "./build/ckeditor.js",
   "types": "./build/ckeditor.d.ts",
   "dependencies": {
-    "@ckeditor/ckeditor5-autoformat": "40.2.0",
     "@ckeditor/ckeditor5-basic-styles": "40.2.0",
-    "@ckeditor/ckeditor5-block-quote": "40.2.0",
+    "@ckeditor/ckeditor5-cloud-services": "40.2.0",
     "@ckeditor/ckeditor5-editor-classic": "40.2.0",
     "@ckeditor/ckeditor5-essentials": "40.2.0",
     "@ckeditor/ckeditor5-heading": "40.2.0",
@@ -23,7 +22,8 @@
     "@ckeditor/ckeditor5-paste-from-office": "40.2.0",
     "@ckeditor/ckeditor5-table": "40.2.0",
     "@ckeditor/ckeditor5-typing": "40.2.0",
-    "@ckeditor/ckeditor5-undo": "40.2.0"
+    "@ckeditor/ckeditor5-undo": "40.2.0",
+    "@ckeditor/ckeditor5-upload": "40.2.0"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-core": "^40.2.0",

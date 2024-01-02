@@ -1,6 +1,8 @@
 import {
   MAIL_WITH_PERSON_ICON,
   MULTIPLE_PERSON_ICON,
+  NEWS_ICON,
+  WEALTH_ICON,
   WRITE_MESSAGE_ICON,
 } from "@/components/assets/SVG/Icons";
 
@@ -18,6 +20,20 @@ export const PanelSidbarNav = [
     link: "/panel/users",
     activeIcon: <MULTIPLE_PERSON_ICON fill="#114737" />,
     inactiveIcon: <MULTIPLE_PERSON_ICON />,
+  },
+  {
+    id: 3,
+    name: "اخبار",
+    link: "/panel/news",
+    activeIcon: <NEWS_ICON fill="#114737" />,
+    inactiveIcon: <NEWS_ICON />,
+  },
+  {
+    id: 4,
+    name: "شفافیت اموال",
+    link: "/panel/wealth",
+    activeIcon: <WEALTH_ICON fill="#114737" />,
+    inactiveIcon: <WEALTH_ICON />,
   },
   // {
   //   id: 3,
