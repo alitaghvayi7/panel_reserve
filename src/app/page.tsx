@@ -113,7 +113,10 @@ export default async function Home() {
         </div>
         {/* last news */}
         <div className="flex flex-col items-stretch gap-8 mt-10">
-          <SectionTitle title="آخرین اخبار" />
+          <div className="flex justify-between">
+            <SectionTitle title="آخرین اخبار" />
+            <Link className="leading-none text-primary-black" href='news'>مشاهده همه</Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-1 gap-x-6 gap-y-6 md:gap-y-0">
             <div className="col-span-1 md:col-span-5 h-[288px] md:h-[430px]">
               <NewsCard type="vertical" />
