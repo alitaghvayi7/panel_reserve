@@ -6,7 +6,7 @@ import AuthDialog from "./AuthDialog";
 
 const MainHeader = () => {
   return (
-    <div
+    <header
       style={{
         background: "linear-gradient(251deg, #187055 19.17%, #62D4A4 76.13%)",
       }}
@@ -56,7 +56,7 @@ const MainHeader = () => {
           <AuthDialog />
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
