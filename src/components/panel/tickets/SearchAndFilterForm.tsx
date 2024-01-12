@@ -61,7 +61,7 @@ const PanelTicketsSearchAndFilter = async ({
     <div className="flex flex-col items-stretch gap-4">
       <div className="flex items-center justify-between">
         <div>
-          <SearchInputForm />
+          <SearchInputForm placeholder="موضوع" searchUrl="/panel/tickets" />
         </div>
         <div
           key={`${searchParams.status}`}

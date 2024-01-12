@@ -6,7 +6,7 @@ import { Viewport } from "next";
 import { nextAuthOptions } from "@/types/Auth";
 
 export const viewport: Viewport = {
-  width: 1073,
+  width: 1200,
 };
 
 export default async function RootLayout({

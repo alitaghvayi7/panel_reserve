@@ -8,6 +8,7 @@ import PanelPagesLayout from "@/components/panel/PagesLayout";
 import { TablePagination } from "@/components/shared/TablePagination";
 import Link from "next/link";
 import { UserPageHeaderQueries } from "@/types/Users";
+import PanelUsersSearchAndfilter from "@/components/panel/users/SearchAndFilterForm";
 
 const getUsers = async ({
   filters,
@@ -73,7 +74,7 @@ const PanelUsersPage = async ({
       navbar={<PanelUsersMainNavbar searchParams={searchParams} />}
     >
       <div>
-        <PanelTicketsSearchAndFilter searchParams={searchParams} />
+        <PanelUsersSearchAndfilter searchParams={searchParams} />
       </div>
       <DataTable columns={columns} data={users.Data} />
       {/* pagination */}

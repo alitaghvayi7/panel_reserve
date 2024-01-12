@@ -7,10 +7,18 @@ import { z } from "zod";
 const schema = z.object({
   title: z.string().min(1, { message: "لطفاً موضوع درخواست را وارد نمائید" }),
 });
-const SearchInputForm = () => {
+const SearchInputForm = ({
+  placeholder,
+  searchUrl,
+}: {
+  placeholder: string;
+  searchUrl: string;
+}) => {
   const searchParams = useSearchParams();
 
   const router = useRouter();
+
+  console.log(searchUrl);
 
   const {
     register,
@@ -45,7 +53,7 @@ const SearchInputForm = () => {
 
     reset();
 
-    router.push(`/panel/tickets?${newParams.toString()}`);
+    router.push(`${searchUrl}?${newParams.toString()}`);
   });
   return (
     <form onSubmit={handleFormSubmit} className="flex flex-col gap-2">
@@ -53,7 +61,7 @@ const SearchInputForm = () => {
         <input
           className="outline-none text-[12px] font-medium grow h-full"
           type="text"
-          placeholder="موضوع"
+          placeholder={placeholder}
           {...register("title")}
         />
 

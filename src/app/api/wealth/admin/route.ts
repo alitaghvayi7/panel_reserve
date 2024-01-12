@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.formData();
-  const remoteReq = await fetch(`${baseUrl}/api/wealth/add`, {
+  const remoteReq = await fetch(`${baseUrl}/api/news/add`, {
     method: "POST",
     next: {
       revalidate: 0,
