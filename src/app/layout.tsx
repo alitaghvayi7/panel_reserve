@@ -19,12 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html dir="rtl" lang="fa-IR">
-      <body
-        className={`${vazir.className} min-h-screen flex flex-col items-stretch justify-between`}
-      >
+      <body className={`${vazir.className} min-h-screen flex flex-col items-stretch justify-between`}      >
         <NextTopLoader zIndex={99999} showSpinner={false} color="#65DAB7" />
         <ClietnSessionProvider>
-          <main>{children}</main>
+          {children}
           <MainFooter />
         </ClietnSessionProvider>
       </body>

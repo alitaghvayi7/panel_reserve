@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const MainFooter = () => {
   return (
-    <div className="bg-primary-gray">
+    <footer className="bg-primary-gray">
       <div className="w-full lg:max-w-[1400px] lg:mx-auto flex flex-col lg:flex-row items-stretch lg:items-start lg:justify-start px-6 lg:px-[5rem] py-8 lg:py-10 gap-7 lg:gap-24 mt-auto">
         <div className="flex flex-col xl:flex-row items-center xl:items-start gap-5 xl:gap-10">
           <div className="relative w-[95px] h-[63px] lg:w-[150px] lg:min-w-[150px] lg:h-[100px] lg:min-h-[100px] overflow-hidden">
@@ -63,7 +63,7 @@ const MainFooter = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
