@@ -10,6 +10,18 @@ export const convertToPersianNumber = (number: string) => {
   const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
   return number.toString().replace(/\d/g, (x) => farsiDigits[parseInt(x)]);
 };
+export const convertToLatinNumber = (number: string) => {
+  const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  const englishDigits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+  let result = number;
+  for (let i = 0; i < persianDigits.length; i++) {
+    const regex = new RegExp(persianDigits[i], "g");
+    result = result.replace(regex, englishDigits[i]);
+  }
+
+  return result;
+};
 
 export const parseDateTime = (dateTimeString: string) => {
   const date = new Date(dateTimeString);

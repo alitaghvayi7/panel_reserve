@@ -36,7 +36,7 @@ const WealthPage = ({
         </div>
       </div>
       {/* main content */}
-      <main className="flex flex-col items-stretch gap-12">
+      <div className="flex flex-col items-stretch gap-12">
         <div>
           {searchParams.month ? (
             +searchParams.month > 0 && +searchParams.month < 13 ? (
@@ -46,7 +46,7 @@ const WealthPage = ({
             )
           ) : null}
         </div>
-      </main>
+      </div>
     </div>
   );
 };

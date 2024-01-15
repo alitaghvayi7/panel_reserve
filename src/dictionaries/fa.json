@@ -1,16 +1,22 @@
 {
-    "site_name": "inprocesssites.ir",
-    "legal": "legal",
-    "brand": "brand",
-    "url": "",
-    
-    "home": {
-        "title": "سایت نماینده یار",
-        "description": "سامانه تعاملی مسئول مربوطه یا مدیر مسئول"
-    },
-    "info": {
-        "address": "",
-        "postal_code": "",
-        "phone": ""
-    }
+  "site_name": "inprocesssites.ir",
+  "legal": "legal",
+  "brand": "brand",
+  "url": "",
+  "slogan": "",
+  "user": {
+    "firstName": "",
+    "lastName": "",
+    "nickName": "",
+    "aboutUser": ""
+  },
+  "home": {
+    "title": "سایت نماینده یار",
+    "description": "سامانه تعاملی مسئول مربوطه یا مدیر مسئول"
+  },
+  "info": {
+    "address": "",
+    "postal_code": "",
+    "phone": ""
+  }
 }

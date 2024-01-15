@@ -3,45 +3,55 @@ import SectionTitle from "@/components/shared/SectionTitle";
 import { DataTable } from "./data-table";
 import AuthDialog from "@/components/shared/AuthDialog";
 import { CVData, columns } from "./columns";
+import { TSearchParams } from "@/types";
+import { TablePagination } from "@/components/shared/TablePagination";
 
-const data: CVData[] = [
-  {
-    Id: 32,
-    Organization: "ورزات فرهنگ و ارشاد",
-    Description:
-      "میتونی به سادگی با گوگل، لینکدین یا ایمیل‌های دیگه ثبت نام کنی یا اگر قبلا حساب کاربری داشتی وارد شی",
-    From: "2020-10-25",
-    To: "2023-10-25",
-    Post: "قاضی",
-  },
-  {
-    Id: 354,
-    Organization: "ورزات فرهنگ و ارشاد",
-    Description:
-      "میتونی به سادگی با گوگل، لینکدین یا ایمیل‌های دیگه ثبت نام کنی یا اگر قبلا حساب کاربری داشتی وارد شی",
-    From: "2020-10-25",
-    To: "2023-10-25",
-    Post: "قاضی",
-  },
-  {
-    Id: 7842,
-    Organization: "ورزات فرهنگ و ارشاد",
-    Description:
-      "میتونی به سادگی با گوگل، لینکدین یا ایمیل‌های دیگه ثبت نام کنی یا اگر قبلا حساب کاربری داشتی وارد شی",
-    From: "2020-10-25",
-    To: "2023-10-25",
-    Post: "قاضی",
-  },
-];
-
-const CVPage = ({
-  searchParams,
+const getCv = async ({
+  page,
 }: {
-  searchParams: {
-    [key: string]: string;
-  };
-}) => {
+  page: number;
+}): Promise<{
+  TotalRow: number;
+  Message: string | null;
+  Data: CVData[];
+  Error: boolean;
+}> => {
+  const getCvList = await fetch(`${process.env.WebUrl}/api/cv/getCv`, {
+    method: "POST",
+    next: {
+      tags: ["cv"],
+    },
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      Page: page,
+      PerPage: 10,
+      Title: null,
+    }),
+  });
+  if (!getCvList.ok) {
+    return {
+      Data: [],
+      Error: true,
+      Message: "خطایی رخ داده است",
+      TotalRow: 0,
+    };
+  }
+  const res = await getCvList.json();
+  return res;
+};
+
+const CVPage = async ({ searchParams }: { searchParams: TSearchParams }) => {
   // console.log(searchParams);
+  const cv = await getCv({
+    page: +searchParams.page || 1,
+  });
+
+  if (cv.Error) {
+    return <div>خطایی رخ داده است</div>;
+  }
+
   return (
     <div className="flex flex-col items-stretch">
       <div className="flex flex-col lg:flex-row lg:gap-10">
@@ -58,13 +68,23 @@ const CVPage = ({
         </div>
         <div className="mt-6 lg:mt-0">
           <p className="text-[14px] lg:text-[16px] text-primary-black">
-            در جدول زیر میتوانیدمحل و مدت خدمت دکتر پزشکیان را در سالهای اخیر
+            در جدول زیر می‌توانید محل و مدت خدمت دکتر پزشکیان را در سال‌های اخیر
             مشاهده کنید.
           </p>
         </div>
       </div>
       <div className="mt-8 w-full lg:max-w-[1100px] mx-auto">
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={cv.Data} />
+      </div>
+      {/* pagination */}
+      <div className="mt-4">
+        <TablePagination
+          route="/candidate-info/cv"
+          currentPage={+searchParams.page || 1}
+          perPage={10}
+          total={cv.TotalRow}
+          searchParams={searchParams}
+        />
       </div>
     </div>
   );

@@ -14,10 +14,10 @@ export const POST = async (req: NextRequest) => {
     },
     body: reqBody,
   });
-  console.log(remoteReq.status);
+
   if (remoteReq.ok) {
     const remoteRes = await remoteReq.json();
-    console.log(remoteRes);
+
     revalidateTag("tickets");
     return NextResponse.json(
       {
@@ -29,8 +29,6 @@ export const POST = async (req: NextRequest) => {
       }
     );
   } else {
-    const res = await remoteReq.json();
-    console.log(res);
     switch (remoteReq.status) {
       case 429: {
         return NextResponse.json(

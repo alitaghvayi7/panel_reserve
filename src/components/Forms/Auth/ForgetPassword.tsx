@@ -31,9 +31,7 @@ const ForgetPasswordForm = () => {
     resolver: zodResolver(schema),
   });
 
-  const handleSubmitForm = handleSubmit(async (data) => {
-    console.log(data);
-  });
+  const handleSubmitForm = handleSubmit(async (data) => {});
   const handleIsForgetting = useFormTypeStore((state) => state.setFormType);
   return (
     <>

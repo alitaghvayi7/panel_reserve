@@ -16,11 +16,10 @@ export default async function RootLayout({
 }) {
   const session = await getServerSession(nextAuthOptions);
   if (!session?.user.isAdmin) {
-    console.log("hello");
     notFound();
   }
   return (
-    <div className="flex">
+    <div className="flex w-full max-w-[2000px] mx-auto">
       <div>
         <PanelMainSidebar />
       </div>

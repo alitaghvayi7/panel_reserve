@@ -1,3 +1,4 @@
+import { parseDateTime } from "@/lib/utils";
 import Image from "next/image";
 
 type TNewsCard = {
@@ -5,18 +6,13 @@ type TNewsCard = {
   picture?: string;
   title?: string;
   description?: string;
-  data?: string;
-  time?: string;
+  date?: string;
 };
 
-const NewsCard = ({
-  type,
-  data,
-  description,
-  picture,
-  time,
-  title,
-}: TNewsCard) => {
+const NewsCard = ({ type, date, description, picture, title }: TNewsCard) => {
+  const { dateString, timeString } = parseDateTime(
+    date || "2022-09-01T00:00:00.000Z"
+  );
   return (
     <div
       className={`w-full h-full relative border border-secendory-gray ${
@@ -54,14 +50,15 @@ const NewsCard = ({
             type === "vertical" ? "line-clamp-3" : "line-clamp-4"
           }`}
         >
-          عضو هیات رئیسه مجلس: خودروسازان با چراغ سبز شورای رقابت قیمت‌ها را
-          افزایش دادند
+          {title ||
+            `عضو هیات رئیسه مجلس: خودروسازان با چراغ سبز شورای رقابت قیمت‌ها را افزایش دادند`}
         </div>
         {/* description */}
         {type === "vertical" ? (
           <div className="text-[12px] lg:text-[16px] line-clamp-2 text-secendory-black font-medium leading-[14px] lg:leading-5">
-            تولیدکننده تا دیروز با دلار چهار هزار تومانی مواد اولیه می خرید حالا
-            با دلار چهل هزار تومانی باید بخرد....
+            {description ||
+              `تولیدکننده تا دیروز با دلار چهار هزار تومانی مواد اولیه می خرید حالا با دلار چهل هزار تومانی باید بخرد....
+        `}
           </div>
         ) : null}
         {/* date and time */}
@@ -69,16 +66,11 @@ const NewsCard = ({
           className={`flex justify-center w-fit items-center gap-1 text-[14px] bg-white leading-none text-third-black absolute bottom-[-1px] left-1/2 -translate-x-1/2 border-x border-t border-secendory-gray rounded-t-lg px-1 pt-1`}
         >
           <div className="flex items-center justify-center leading-none">
-            {`${(1404).toLocaleString("fa-IR", {
-              useGrouping: false,
-            })}/${(9).toLocaleString("fa-IR", {
-              useGrouping: false,
-            })}/${(23).toLocaleString("fa-IR", { useGrouping: false })}`}
+            {dateString}
           </div>
           <div className="h-4 w-[1px] bg-third-black mb-1"></div>
           <div className="flex items-center justify-center leading-none">
-            {(10).toLocaleString("fa-IR", { useGrouping: false })}:
-            {(23).toLocaleString("fa-IR", { useGrouping: false })}
+            {timeString}
           </div>
         </div>
       </div>

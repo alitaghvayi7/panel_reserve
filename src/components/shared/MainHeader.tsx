@@ -10,7 +10,7 @@ const MainHeader = () => {
       style={{
         background: "linear-gradient(251deg, #187055 19.17%, #62D4A4 76.13%)",
       }}
-      className="relative flex items-center rounded-2xl px-3 py-4 lg:px-10 lg:py-5 mb-6 lg:max-w-[1400px] mx-auto"
+      className="relative flex items-center rounded-2xl px-3 py-4 lg:px-10 lg:py-5 mb-6 lg:max-w-[1200px] mx-auto"
     >
       {/* Desktop Flage */}
       <div className="absolute left-[17%] top-0 bottom-0 h-full w-[500px] hidden lg:block overflow-hidden">

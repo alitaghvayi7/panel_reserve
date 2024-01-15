@@ -4,8 +4,11 @@ import { getServerSession } from "next-auth";
 import SearchInputForm from "../tickets/SearchInputForm";
 import PanelFilterTickets from "../tickets/FilterTickets";
 import ActiveSearchFilters from "../tickets/ActiveSearchFilters";
+import PanelFilterUsers from "./FilterUsers";
+import { TUserFilterMenuItem } from "@/types/FilterTickets";
+import UserPageActiveSearchFilters from "./ActiveSearchFilters";
 
-export const menus = [
+export const menus: TUserFilterMenuItem[] = [
   {
     id: 1,
     name: "ادمین",
@@ -42,13 +45,13 @@ const PanelUsersSearchAndfilter = async ({
         >
           <div>{/* <PanelSortTickets /> */}</div>
           <div>
-            <PanelFilterTickets menus={menus} />
+            <PanelFilterUsers menus={menus} />
           </div>
         </div>
       </div>
       {/* active search filters */}
       <div>
-        <ActiveSearchFilters menus={menus} />
+        <UserPageActiveSearchFilters menus={menus} />
       </div>
     </div>
   );

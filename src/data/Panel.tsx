@@ -1,7 +1,10 @@
 import {
+  AWARDS_ICON,
+  CV_ICON,
   MAIL_WITH_PERSON_ICON,
   MULTIPLE_PERSON_ICON,
   NEWS_ICON,
+  PROGRAMS_ICON,
   WEALTH_ICON,
   WRITE_MESSAGE_ICON,
 } from "@/components/assets/SVG/Icons";
@@ -34,6 +37,27 @@ export const PanelSidbarNav = [
     link: "/panel/wealth",
     activeIcon: <WEALTH_ICON fill="#114737" />,
     inactiveIcon: <WEALTH_ICON />,
+  },
+  {
+    id: 5,
+    name: "جوایز و افتخارات",
+    link: "/panel/awards",
+    activeIcon: <AWARDS_ICON fill="#114737" />,
+    inactiveIcon: <AWARDS_ICON />,
+  },
+  {
+    id: 6,
+    name: "رزومه",
+    link: "/panel/cv",
+    activeIcon: <CV_ICON fill="#114737" />,
+    inactiveIcon: <CV_ICON />,
+  },
+  {
+    id: 7,
+    name: "برنامه و ایدئولوژی",
+    link: "/panel/programs",
+    activeIcon: <PROGRAMS_ICON fill="#114737" />,
+    inactiveIcon: <PROGRAMS_ICON />,
   },
   // {
   //   id: 3,

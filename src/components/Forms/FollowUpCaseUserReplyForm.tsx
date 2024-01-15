@@ -20,7 +20,6 @@ const FollowUpCasesUserReplyForm = ({ ticketId }: { ticketId: number }) => {
     resolver: zodResolver(schema),
   });
   const handleSubmitForm = handleSubmit(async (data) => {
-    console.log(ticketId);
     const req = await fetch("/api/tickets/reply/user", {
       method: "POST",
       headers: {

@@ -33,9 +33,7 @@ const LoginWithUserNameAndPasswordForm = () => {
     resolver: zodResolver(schema),
   });
 
-  const handleSubmitForm = handleSubmit((data) => {
-    console.log(data);
-  });
+  const handleSubmitForm = handleSubmit((data) => {});
   return (
     <div className="flex flex-col items-stretch gap-4 lg:gap-6">
       <form

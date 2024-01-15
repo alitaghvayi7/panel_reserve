@@ -14,7 +14,7 @@ const Layouyt = async ({ children }: { children: ReactNode }) => {
   }
   const res = await req.json();
   return (
-    <div className="flex flex-col items-stretch lg:mt-10 lg:max-w-[1400px] lg:mx-auto">
+    <div className="flex flex-col items-stretch lg:mt-10 lg:max-w-[1200px] lg:mx-auto">
       <div className="flex flex-col gap-10 lg:gap-20">
         <div className="flex flex-col lg:items-start lg:flex-row gap-6 lg:gap-[5rem]">
           {/* title */}

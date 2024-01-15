@@ -165,7 +165,7 @@ const ConfirmOTPForm = () => {
                   if (e.key === "Backspace" && index === activeInput) {
                     setOtp((prev) => {
                       prev[index] = "";
-                      console.log([...prev]);
+
                       return [...prev];
                     });
                     setActiveInput((prev) => {

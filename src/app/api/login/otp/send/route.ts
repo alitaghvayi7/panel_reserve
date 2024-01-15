@@ -28,8 +28,6 @@ export const POST = async (req: NextRequest) => {
       }
     );
   } else {
-    console.log(remoteReq.status);
-
     switch (remoteReq.status) {
       case 429: {
         return NextResponse.json(

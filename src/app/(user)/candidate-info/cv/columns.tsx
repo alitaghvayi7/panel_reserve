@@ -11,8 +11,7 @@ export type CVData = {
   Id: number;
   Organization: string;
   Post: string;
-  From: string;
-  To: string;
+  Duration: string;
   Description: string;
 };
 
@@ -28,8 +27,7 @@ export const columns: ColumnDef<CVData>[] = [
       const description = row.original.Description;
       const organization = row.original.Organization;
       const post = row.original.Post;
-      const from = row.original.From;
-      const to = row.original.To;
+      const duration = row.original.Duration;
 
       return (
         <div>
@@ -54,9 +52,7 @@ export const columns: ColumnDef<CVData>[] = [
             <div className="flex items-center gap-2">
               <span className="text-[10px] text-secondary-black">مدت کار:</span>
               <div className="flex items-center gap-1 text-[10px] font-light text-secondary-black line-clamp-1">
-                <span>{parseDateTime(to).dateString}</span>
-                <span>-</span>
-                <span>{parseDateTime(from).dateString}</span>
+                {duration}
               </div>
             </div>
             <div className="flex items-start gap-2">
@@ -105,15 +101,10 @@ export const columns: ColumnDef<CVData>[] = [
     accessorKey: "Date",
     header: () => <div className="hidden md:block text-right">مدت کار</div>,
     cell({ row, cell }) {
-      const from = row.original.From;
-      const to = row.original.To;
+      const duration = row.original.Duration;
       return (
         <div className="hidden p-0 md:block text-[16px] font-light text-primary-black">
-          <div className="flex items-center">
-            <span>{parseDateTime(to).dateString}</span>
-            <span>-</span>
-            <span>{parseDateTime(from).dateString}</span>
-          </div>
+          <div className="flex items-center">{duration}</div>
         </div>
       );
     },

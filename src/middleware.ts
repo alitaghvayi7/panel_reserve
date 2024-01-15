@@ -10,8 +10,7 @@ export default withAuth(
     // console.log(req.nextUrl.searchParams.get("type"));
     // console.log(req);
     if (!req.nextauth.token) {
-      console.log("middle");
-      redirect("/wealth");
+      redirect("/");
     }
   },
   {

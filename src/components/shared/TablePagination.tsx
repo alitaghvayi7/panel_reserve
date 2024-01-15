@@ -24,6 +24,7 @@ export function TablePagination({
   };
 }) {
   const totalPages = Math.ceil(total / perPage);
+
   const oldParams = new URLSearchParams(searchParams)
     .toString()
     .split("&")
@@ -58,7 +59,9 @@ export function TablePagination({
         </PaginationItem> */}
         <PaginationItem>
           <PaginationNext
-            isDisabled={currentPage === totalPages ? true : false}
+            isDisabled={
+              currentPage === totalPages || totalPages === 0 ? true : false
+            }
             className={`${
               currentPage === totalPages && "text-[rgba(125,125,125,1)]"
             }`}

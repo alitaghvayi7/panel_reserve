@@ -15,7 +15,7 @@ const FollowUpCases = ({
   const followUpCode = +searchParams.code;
 
   return (
-    <div className="flex flex-col items-stretch lg:mt-10 max-w-[1400px] mx-auto">
+    <div className="flex flex-col items-stretch lg:mt-10 max-w-[1200px] mx-auto">
       <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-20">
         {/* title */}
         <div className="flex items-center justify-between gap-2">

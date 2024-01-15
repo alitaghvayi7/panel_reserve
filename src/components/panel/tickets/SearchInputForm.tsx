@@ -18,8 +18,6 @@ const SearchInputForm = ({
 
   const router = useRouter();
 
-  console.log(searchUrl);
-
   const {
     register,
     handleSubmit,

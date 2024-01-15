@@ -110,7 +110,7 @@ const PaginationNext = ({
         buttonVariants({
           variant: isDisabled ? "ghost" : "outline",
           className:
-            "gap-1 pl-2.5 hover:select-none hover:bg-inherit hover:text-[rgba(125,125,125,1)]",
+            "gap-1 pl-2.5 bg-inherit text-[rgba(125,125,125,1)] hover:select-none hover:bg-inherit hover:text-[rgba(125,125,125,1)]",
         }),
         className
       )}

@@ -20,9 +20,7 @@ const SignUpForm = () => {
     resolver: zodResolver(schema),
   });
 
-  const handleSubmitForm = handleSubmit((data) => {
-    console.log(data);
-  });
+  const handleSubmitForm = handleSubmit((data) => {});
   return (
     <div className="">
       <form

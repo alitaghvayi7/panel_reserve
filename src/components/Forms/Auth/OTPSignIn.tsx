@@ -21,7 +21,7 @@ const OTPSignInForm = () => {
     state.setFormType,
     state.additionalData,
   ]);
-  console.log(additionalData?.phoneNumber);
+
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -49,7 +49,6 @@ const OTPSignInForm = () => {
     });
     const res = await req.json();
     if (req.ok) {
-      console.log(req.status);
       setFormType({
         formType: "confirmOTP",
         additionalData: {

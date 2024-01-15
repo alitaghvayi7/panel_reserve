@@ -25,7 +25,7 @@ const PanelPagesLayout = ({
           <span>{date}</span>
         </div>
       </header>
-      <main className="flex flex-col items-stretch gap-4">{children}</main>
+      <div className="flex flex-col items-stretch gap-4">{children}</div>
     </div>
   );
 };

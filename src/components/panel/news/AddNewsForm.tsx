@@ -2,6 +2,7 @@
 
 import { ADD_IMAGE_ICON, DELETE_ICON } from "@/components/assets/SVG/Icons";
 import FormButton from "@/components/shared/Buttons/FormButton";
+import { baseUrl } from "@/services/main";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
@@ -61,22 +62,14 @@ const AddNewsForm = () => {
 
   const handleSubmitForm = handleSubmit(async (data) => {
     setServerMessage("");
+    console.log(data.description);
     const formData = new FormData();
     formData.append("Title", data.title);
     formData.append("Description", data.description);
     formData.append("Visibility", data.isNewsActive.toString());
     formData.append("Image", data.image[0]);
-    // console.log(data);
-    // const req = await fetch(`${baseUrl}/api/news/add`, {
-    //     method: "POST",
-    //     headers: {
-    //       Authorization: `Bearer ${session.data?.user?.token || ""}`,
-    //     },
-    //     body: formData,
-    //   });
-    const req = await fetch(`/api/wealth/admin`, {
+    const req = await fetch(`${baseUrl}/api/news/add`, {
       method: "POST",
-      cache: "no-store",
       headers: {
         Authorization: `Bearer ${session.data?.user?.token || ""}`,
       },
@@ -84,11 +77,11 @@ const AddNewsForm = () => {
     });
 
     const res = await req.json();
-    console.log(res);
+
     if (req.ok) {
       setServerMessage("عملیات با موفقیت انجام شد.");
     } else {
-      setError("description", { message: res.message });
+      setError("description", { message: res.Message });
     }
   });
   return (
