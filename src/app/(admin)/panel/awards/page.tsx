@@ -1,14 +1,12 @@
-import { TFilterTicketDate, TSearchParams } from "@/types";
+import { TSearchParams } from "@/types";
 import { DataTable } from "./data-table";
-
-import { getServerSession } from "next-auth";
-import { nextAuthOptions } from "@/types/Auth";
 
 import PanelPagesLayout from "@/components/panel/PagesLayout";
 import { TablePagination } from "@/components/shared/TablePagination";
-import AddCvForm from "@/components/Forms/AddCvForm";
+
 import { AwardsData, columns } from "./columns";
 import AddAwardForm from "@/components/Forms/AddAwardForm";
+import { revalidatePath } from "next/cache";
 
 const getAwards = async ({
   page,
