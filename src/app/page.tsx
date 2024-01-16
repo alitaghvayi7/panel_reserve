@@ -62,7 +62,7 @@ export default async function Home() {
   const news = await getNews();
   const schemaData = {
     "@context": "https://schema.org/",
-    "@type": "Business",
+    "@type": "Person",
     name: dict.home.title,
     image: "/assets/images/logo.png",
     legalName: dict.legal,
