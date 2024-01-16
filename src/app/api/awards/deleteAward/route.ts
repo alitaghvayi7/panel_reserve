@@ -4,17 +4,18 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.json();
-  const remoteReq = await fetch(`${baseUrl}/api/honor/getlist`, {
+  const remoteReq = await fetch(`${baseUrl}/api/honor/remove`, {
     method: "POST",
-    cache: "no-store",
     headers: {
       "Content-Type": "application/json",
+      Authorization: req.headers.get("Authorization") || "",
     },
     body: JSON.stringify({ ...reqBody }),
   });
 
   if (remoteReq.ok) {
     const remoteRes = await remoteReq.json();
+    revalidateTag("awards");
     return NextResponse.json(
       {
         ...remoteRes,

@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.json();
-  const remoteReq = await fetch(`${baseUrl}/api/news/getlist`, {
+  const remoteReq = await fetch(`${baseUrl}/api/news/get`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

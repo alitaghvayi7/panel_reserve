@@ -11,7 +11,6 @@ export type AwardsData = {
   Id: number;
   Title: string;
   Description: string;
-  CreatedAt: string;
   Date: string;
   Image: string;
 };
@@ -28,7 +27,7 @@ export const columns: ColumnDef<AwardsData>[] = [
     cell({ row }) {
       const description = row.original.Description;
       const title = row.original.Title;
-      const date = row.original.CreatedAt;
+      const date = row.original.Date;
       const image = row.original.Image;
 
       return (
@@ -94,7 +93,7 @@ export const columns: ColumnDef<AwardsData>[] = [
     },
   },
   {
-    accessorKey: "CreatedAt",
+    accessorKey: "Date",
     header: () => <div className="hidden md:block text-right">تاریخ ارسال</div>,
     cell({ row, cell }) {
       const date = cell.getValue() as string;

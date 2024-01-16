@@ -63,3 +63,24 @@ export const parseRelativeDate = (str: TFilterTicketDate) => {
       return new Date(today.setDate(today.getDate() - 30)).toISOString();
   }
 };
+
+export const convertPersianDateToEnglishDate = (persianDate: string) => {
+  let [year, month, day] = persianDate.split("/").map(Number);
+
+  // Adjust year based on the difference between Persian and Gregorian epochs
+  year += 621;
+
+  // Create a new Date object with the adjusted year
+  let date = new Date(year, month - 1, day);
+
+  // Use Intl.DateTimeFormat to format the date
+  let formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
+  let formattedDate = formatter.format(date);
+
+  return formattedDate;
+};

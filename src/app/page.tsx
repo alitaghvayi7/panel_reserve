@@ -179,7 +179,7 @@ export default async function Home() {
           </div>
         </section>
         {/* multi media */}
-        <section className="flex flex-col items-stretch gap-8 mt-10">
+        {/* <section className="flex flex-col items-stretch gap-8 mt-10">
           <SectionTitle title="چند رسانه‌ای" />
           <div className="grid grid-cols-1 grid-flow-row md:grid-cols-12 md:grid-rows-1 gap-4 md:gap-y-0">
             <div className="col-span-1 h-[350px] md:col-span-3 md:h-[335px]">
@@ -195,7 +195,7 @@ export default async function Home() {
               <MultiMediaCard />
             </div>
           </div>
-        </section>
+        </section> */}
       </article>
       <script
         type="application/ld+json"

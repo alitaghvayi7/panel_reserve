@@ -28,7 +28,7 @@ const isHeaderVisibleInMobile = (id: string) => {
       return false;
     case "Image":
       return false;
-    case "CreatedAt":
+    case "Date":
       return false;
     default:
       return true;

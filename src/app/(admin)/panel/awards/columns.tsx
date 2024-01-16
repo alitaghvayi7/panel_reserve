@@ -1,5 +1,6 @@
 "use client";
 
+import RemoveAwardDialog from "@/components/panel/awards/RemoveAwardDialog";
 import { parseDateTime } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
@@ -11,7 +12,6 @@ export type AwardsData = {
   Id: number;
   Title: string;
   Description: string;
-  CreatedAt: string;
   Date: string;
   Image: string;
 };
@@ -28,7 +28,7 @@ export const columns: ColumnDef<AwardsData>[] = [
     cell({ row }) {
       const description = row.original.Description;
       const title = row.original.Title;
-      const date = row.original.CreatedAt;
+      const date = row.original.Date;
       const image = row.original.Image;
 
       return (
@@ -39,7 +39,7 @@ export const columns: ColumnDef<AwardsData>[] = [
           <div className="flex flex-col items-stretch gap-2 md:hidden">
             <div className="flex items-center self-center">
               <div className="relative w-[80px] h-[80px] overflow-hidden rounded-lg">
-                <Image src={image} alt="" fill />
+                {image && <Image src={image} alt="" fill />}
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -74,7 +74,7 @@ export const columns: ColumnDef<AwardsData>[] = [
       return (
         <div>
           <div className="relative w-[64px] h-[64px] overflow-hidden rounded-lg">
-            <Image src={image} alt="" fill />
+            {image && <Image src={image} alt="" fill />}
           </div>
         </div>
       );
@@ -94,13 +94,32 @@ export const columns: ColumnDef<AwardsData>[] = [
     },
   },
   {
-    accessorKey: "CreatedAt",
+    accessorKey: "Date",
     header: () => <div className="hidden md:block text-right">تاریخ ارسال</div>,
     cell({ row, cell }) {
       const date = cell.getValue() as string;
       return (
         <div className="hidden p-0 md:block text-[16px] font-light text-primary-black">
           {parseDateTime(date).dateString}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "actions",
+    header: () => {
+      return <div className="text-right">بیشتر</div>;
+    },
+    cell(props) {
+      // console.log(props.row.original);
+      return (
+        <div className="flex items-center justify-center gap-2">
+          <RemoveAwardDialog
+            date={parseDateTime(props.row.original.Date).dateString}
+            id={props.row.original.Id}
+            description={props.row.original.Description}
+            title={props.row.original.Title}
+          />
         </div>
       );
     },

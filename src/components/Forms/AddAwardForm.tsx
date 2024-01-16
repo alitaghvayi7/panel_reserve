@@ -9,13 +9,9 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
-
-const CustomEditor = dynamic(
-  () => {
-    return import("@/components/custom-editor");
-  },
-  { ssr: false }
-);
+import { CustomDatePicker } from "../shared/DatePicker";
+import { baseUrl } from "@/services/main";
+import { useRouter } from "next/navigation";
 
 const MAX_FILE_SIZE = 200000000;
 const ACCEPTED_IMAGE_TYPES = ["image/jpg", "image/png"];
@@ -23,6 +19,7 @@ const ACCEPTED_IMAGE_TYPES = ["image/jpg", "image/png"];
 const schema = z.object({
   title: z.string().min(1, { message: "لطفاً عنوان را وارد نمائید." }),
   description: z.string().min(1, { message: "لطفاً توضیحات را وارد نمائید." }),
+  date: z.string().min(1, { message: "لطفاً تاریخ را وارد نمائید." }),
   image: z
     .any()
     .refine((file) => {
@@ -45,6 +42,7 @@ const AddNewsForm = () => {
   const session = useSession();
   const [serverMessage, setServerMessage] = useState("");
   const [imagePreview, setImagePreview] = useState<File | null>(null);
+  const router = useRouter();
 
   const {
     register,
@@ -61,25 +59,34 @@ const AddNewsForm = () => {
   const handleSubmitForm = handleSubmit(async (data) => {
     setServerMessage("");
     const formData = new FormData();
-    console.log(data);
-    // formData.append("Title", data.title);
-    // formData.append("Description", data.description);
-    // formData.append("Image", data.image[0]);
-    // const req = await fetch(`/api/wealth/admin`, {
-    //   method: "POST",
-    //   headers: {
-    //     Authorization: `Bearer ${session.data?.user?.token || ""}`,
-    //   },
-    //   body: formData,
-    // });
+    // console.log(data);
+    formData.append("Title", data.title);
+    formData.append("Description", data.description);
+    formData.append("Image", data.image[0]);
+    formData.append("Date", data.date);
+    try {
+      const req = await fetch(`${baseUrl}/api/honor/add`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${session.data?.user?.token || ""}`,
+        },
+        body: formData,
+      });
 
-    // const res = await req.json();
+      const res = await req.json();
 
-    // if (req.ok) {
-    //   setServerMessage("عملیات با موفقیت انجام شد.");
-    // } else {
-    //   setError("description", { message: res.message });
-    // }
+      if (req.ok) {
+        setServerMessage("عملیات با موفقیت انجام شد.");
+        await fetch(`/api/awards/addAward`, {
+          method: "POST",
+        });
+        // router.refresh();
+      } else {
+        setError("description", { message: res.Message });
+      }
+    } catch (error) {
+      setError("description", { message: "خطایی رخ داده است." });
+    }
   });
   return (
     <div className="w-full max-w-[800px] mx-auto">
@@ -186,6 +193,32 @@ const AddNewsForm = () => {
             {errors.description && (
               <span className="text-red-500 text-[12px]">
                 {errors.description.message?.toString()}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col space-y-2 w-[60%] mx-auto max-w-[220px]">
+            <label
+              htmlFor="date"
+              className="text-[14px] font-medium text-secondary-black"
+            >
+              تاریخ دریافت
+            </label>
+            <Controller
+              name="date"
+              control={control}
+              defaultValue={""}
+              render={({ field }) => {
+                return (
+                  <CustomDatePicker
+                    inputOnchange={field.onChange}
+                    inputValue={field.value}
+                  />
+                );
+              }}
+            />
+            {errors.date && (
+              <span className="text-red-500 text-[12px]">
+                {errors.date.message?.toString()}
               </span>
             )}
           </div>
