@@ -5,7 +5,7 @@ const TicketsPage = async ({
     [key: string]: string;
   };
 }) => {
-  return <></>;
+  return <div></div>;
 };
 
 export default TicketsPage;

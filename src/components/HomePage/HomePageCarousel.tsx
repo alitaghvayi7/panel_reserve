@@ -13,7 +13,10 @@ import AuthDialog from "../shared/AuthDialog";
 const HomePageCarousel = () => {
   return (
     <div className="">
-      <div className="h-[414px] lg:h-[512px] rounded-2xl overflow-hidden">
+      <div className="h-[414px] lg:h-[512px] rounded-2xl overflow-hidden relative">
+        <div className="absolute z-[100] left-[20px] top-[70px] sm:top-[30px]">
+          <AuthDialog />
+        </div>
         <Swiper
           modules={[Pagination]}
           pagination={{
@@ -41,9 +44,6 @@ const HomePageCarousel = () => {
             <div className="flex flex-col sm:flex-row justify-between px-6 absolute right-0 left-0 top-8 z-40">
               <div className="text-[20px] lg:text-[24px] text-white font-black leading-8 lg:leading-[48px] max-w-[400px]">
                 مردی از دل مردم انتخابی بر اساس شایسته سالاری
-              </div>
-              <div className="self-end sm:self-start">
-                <AuthDialog />
               </div>
             </div>
             <div className="absolute left-[-10px] lg:left-10 bottom-0 overflow-hidden w-[280px] h-[280px] md:w-[350px] md:h-[340px] lg:w-[500px] lg:h-[500px] z-20">

@@ -4,6 +4,7 @@ export type TNavSections = {
   link: string;
   description: string;
   icon: JSX.Element;
+  miniIcon?: JSX.Element;
 };
 
 export type TSearchParams = {

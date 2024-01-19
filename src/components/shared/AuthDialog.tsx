@@ -9,7 +9,6 @@ import {
 } from "../ui/dialog";
 import SignInButton from "./Buttons/SignIn";
 
-import OTPSignIn from "../Forms/Auth/OTPSignIn";
 import { useFormTypeStore } from "@/hooks/main-dialog-store";
 import ForgetPasswordForm from "../Forms/Auth/ForgetPassword";
 import AuthFormContainer from "../Forms/Auth/FormsContainer";
@@ -18,6 +17,7 @@ import { PERSON_ICON } from "../assets/SVG/Icons";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { convertToPersianNumber } from "@/lib/utils";
+import { AccountMenuBar } from "./AccountMenuBar";
 
 const formComponents: {
   [key: string]: JSX.Element;
@@ -34,29 +34,17 @@ const AuthDialog = () => {
     state.setFormType,
   ]);
   if (session.status === "authenticated") {
-    return (
-      <Link href={session.data.user.isAdmin ? "/panel" : "/account"}>
-        <SignInButton className="flex items-center justify-center gap-2 h-full leading-none whitespace-nowrap">
-          <span className="w-[14px] lg:w-[16px] h-[14px] lg:h-[16px]">
-            <PERSON_ICON />
-          </span>
-          <span className="flex items-center justify-center text-[12px] lg:text-[14px] leading-none">
-            {session.data.user?.name?.trim() ||
-              convertToPersianNumber(session.data.user?.phone || "")}
-          </span>
-        </SignInButton>
-      </Link>
-    );
+    return <AccountMenuBar />;
   }
   return (
     <div>
       <Dialog>
         <DialogTrigger className="h-full" asChild>
-          <SignInButton className="flex items-center justify-center gap-2 h-full whitespace-nowrap">
+          <SignInButton className="flex items-center justify-center gap-2 h-full whitespace-nowrap p-2 md:px-4">
             <span className="w-[14px] lg:w-[16px] h-[14px] lg:h-[16px]">
               <PERSON_ICON />
             </span>
-            <span>ورود/عضویت</span>
+            <span className="hidden md:inline">ورود/عضویت</span>
           </SignInButton>
         </DialogTrigger>
         <DialogPortal>

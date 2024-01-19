@@ -5,10 +5,12 @@ const ChatBoxUserCard = ({
   messageData,
   ticketID,
   ticketTitle,
+  role = "User",
 }: {
   ticketID: number;
   messageData: any;
   ticketTitle: string;
+  role?: "User" | "Admin";
 }) => {
   const { dateString, timeString } = parseDateTime(messageData.CreatedAt);
   return (
@@ -31,7 +33,7 @@ const ChatBoxUserCard = ({
           <div className="flex items-center gap-2">
             <div className="w-[2px] h-[2px] bg-primary-black rounded-full overflow-hidden"></div>
             <div className="text-[10px] lg:text-[14px] font-light text-secondary-black">
-              شما ارسال کردید
+              {role === "User" ? "شما ارسال کردید" : "کاربر ارسال کرده است"}
             </div>
           </div>
           <div className="text-[14px] lg:text-[20px] text-primary-black font-medium">

@@ -29,7 +29,13 @@ const editorConfiguration = {
   ],
 };
 
-function CustomEditor({ onChange }: { onChange: (data: string) => void }) {
+function CustomEditor({
+  onChange,
+  defaultValue,
+}: {
+  onChange: (data: string) => void;
+  defaultValue: string;
+}) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     if (isMounted) return;
@@ -41,7 +47,7 @@ function CustomEditor({ onChange }: { onChange: (data: string) => void }) {
       <CKEditor
         editor={Editor}
         config={editorConfiguration}
-        data={""}
+        data={defaultValue}
         onChange={(event, editor) => {
           const data = editor.getData();
           onChange(data);

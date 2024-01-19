@@ -13,6 +13,7 @@ export const NavSections: TNavSections[] = [
     description: "تا کنون 200 شکایت از طریق سایت ثبت شده است",
     link: "/follow-up-cases",
     icon: <PERSON_WITH_MARK_ICON />,
+    miniIcon: <PERSON_WITH_MARK_ICON fill="#7D7D7D" />,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const NavSections: TNavSections[] = [
     description: "منتظر نظرات و انتقادات شما هستیم",
     link: "/tickets",
     icon: <COMMENT_ICON />,
+    miniIcon: <COMMENT_ICON fill="#7D7D7D" />,
   },
   {
     id: 3,
@@ -27,14 +29,15 @@ export const NavSections: TNavSections[] = [
     description: "آرای ثبت شده رو اینجا ببین",
     link: "/votes-clarity",
     icon: <VOTE_ICON />,
+    miniIcon: <VOTE_ICON fill="#7D7D7D" />,
   },
-  {
-    id: 4,
-    title: "شفافیت اموال",
-    description: "هیچ چیزی از شما پنهان نیست!",
-    link: "/wealth",
-    icon: <TAX_ICON />,
-  },
+  // {
+  //   id: 4,
+  //   title: "شفافیت اموال",
+  //   description: "هیچ چیزی از شما پنهان نیست!",
+  //   link: "/wealth",
+  //   icon: <TAX_ICON />,
+  // },
 ];
 
 export const CandidateInfoNav = [

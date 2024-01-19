@@ -1,4 +1,5 @@
 import { getPersianDate } from "@/lib/utils";
+export const dynamic = "force-dynamic";
 
 const PanelPagesLayout = ({
   navbar,

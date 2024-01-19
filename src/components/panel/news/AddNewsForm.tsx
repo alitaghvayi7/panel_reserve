@@ -185,7 +185,9 @@ const AddNewsForm = () => {
               control={control}
               defaultValue={""}
               render={({ field }) => {
-                return <CustomEditor onChange={field.onChange} />;
+                return (
+                  <CustomEditor onChange={field.onChange} defaultValue="" />
+                );
               }}
             />
             {errors.description && (

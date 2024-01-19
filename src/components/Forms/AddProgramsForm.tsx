@@ -1,12 +1,11 @@
 "use client";
 
-import { ADD_IMAGE_ICON, DELETE_ICON } from "@/components/assets/SVG/Icons";
 import FormButton from "@/components/shared/Buttons/FormButton";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -21,7 +20,7 @@ const schema = z.object({
   description: z.string().min(1, { message: "لطفاً توضیحات را وارد نمائید." }),
 });
 
-const AddProgramsForm = () => {
+const AddProgramsForm = ({ defaultValue }: { defaultValue: string }) => {
   const session = useSession();
   const [serverMessage, setServerMessage] = useState("");
 
@@ -76,9 +75,14 @@ const AddProgramsForm = () => {
             <Controller
               name="description"
               control={control}
-              defaultValue={""}
+              defaultValue={defaultValue}
               render={({ field }) => {
-                return <CustomEditor onChange={field.onChange} />;
+                return (
+                  <CustomEditor
+                    onChange={field.onChange}
+                    defaultValue={field.value}
+                  />
+                );
               }}
             />
             {errors.description && (

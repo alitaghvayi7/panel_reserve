@@ -14,10 +14,10 @@ export const POST = async (req: NextRequest) => {
       Description: reqBody.description,
     }),
   });
-  // revalidateTag("programs");
 
   if (remoteReq.ok) {
     const remoteRes = await remoteReq.json();
+    revalidateTag("programs");
 
     return NextResponse.json(
       {

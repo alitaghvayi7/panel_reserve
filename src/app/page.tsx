@@ -91,11 +91,11 @@ export default async function Home() {
         <section>
           {/* main nav */}
           <nav>
-            <ul className="mt-14 grid grid-cols-4 grid-flow-row lg:grid-cols-12 lg:grid-rows-1 gap-y-8 gap-x-4 lg:gap-y-0 lg:gap-x-6">
+            <ul className="mt-14 grid grid-cols-1 grid-flow-row sm:grid-cols-12 sm:grid-rows-1 gap-y-8 gap-x-4 sm:gap-y-0 sm:gap-x-6">
               {NavSections.map((item) => (
                 <li
                   key={item.id}
-                  className="col-span-2 lg:col-span-3 h-[157px] xl:h-[216px]"
+                  className="sm:col-span-4 h-[157px] xl:h-[170px]"
                 >
                   <WebSiteNavigationCard
                     description={item.description}
@@ -142,7 +142,7 @@ export default async function Home() {
         <section className="flex flex-col items-stretch gap-8 mt-10">
           <div className="flex justify-between">
             <SectionTitle title="آخرین اخبار" />
-            <Link className="leading-none text-primary-black" href="news">
+            <Link className="leading-none text-primary-black" href="/news">
               مشاهده همه
             </Link>
           </div>

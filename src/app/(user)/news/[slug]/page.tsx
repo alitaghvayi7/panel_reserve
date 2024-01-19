@@ -1,10 +1,9 @@
 import { headers } from "next/headers";
-import { getDictionary } from "../../../dictionaries";
 import HomeButton from "@/components/shared/Buttons/HomeButton";
 import AuthDialog from "@/components/shared/AuthDialog";
-import { parseDateTime } from "@/lib/utils";
 import SectionTitle from "@/components/shared/SectionTitle";
 import Image from "next/image";
+import { getDictionary } from "@/app/dictionaries";
 
 const getNewsData = async ({
   id,

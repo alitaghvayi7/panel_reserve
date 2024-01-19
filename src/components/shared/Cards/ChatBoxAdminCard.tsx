@@ -7,11 +7,13 @@ const ChatBoxAdminCard = ({
   messageData,
   ticketID,
   ticketTitle,
+  role = "User",
 }: {
   repliable: boolean;
   ticketID: number;
   messageData: any;
   ticketTitle: string;
+  role?: "Admin" | "User";
 }) => {
   const { dateString, timeString } = parseDateTime(messageData.CreatedAt);
   return (
@@ -36,7 +38,9 @@ const ChatBoxAdminCard = ({
               <Image src={`/Images/person.png`} alt="" fill />
             </div>
             <div className="text-[10px] lg:text-[14px] font-light text-secondary-black">
-              پاسخ دکتر پزشکیان نماینده مجلس
+              {role === "User"
+                ? "پاسخ دکتر پزشکیان نماینده مجلس"
+                : "پاسخ ادمین"}
             </div>
           </div>
           <div className="text-[14px] lg:text-[20px] text-primary-black font-medium">

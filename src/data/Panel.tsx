@@ -31,13 +31,13 @@ export const PanelSidbarNav = [
     activeIcon: <NEWS_ICON fill="#114737" />,
     inactiveIcon: <NEWS_ICON />,
   },
-  {
-    id: 4,
-    name: "شفافیت اموال",
-    link: "/panel/wealth",
-    activeIcon: <WEALTH_ICON fill="#114737" />,
-    inactiveIcon: <WEALTH_ICON />,
-  },
+  // {
+  //   id: 4,
+  //   name: "شفافیت اموال",
+  //   link: "/panel/wealth",
+  //   activeIcon: <WEALTH_ICON fill="#114737" />,
+  //   inactiveIcon: <WEALTH_ICON />,
+  // },
   {
     id: 5,
     name: "جوایز و افتخارات",

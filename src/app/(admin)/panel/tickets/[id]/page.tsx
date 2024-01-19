@@ -42,7 +42,7 @@ const PanelSingleTicket = async ({
           {/* card */}
           {/* <ChatBoxUserCard />
         <ChatBoxAdminCard /> */}
-          {res.Data.TicketDetails.map((item: any, index: number) => {
+          {res.Data.TicketDetails.reverse().map((item: any, index: number) => {
             if (res.Data.Status === 1 || res.Data.Status === 0) {
               return index % 2 === 0 ? (
                 <ChatBoxUserCard
@@ -50,6 +50,7 @@ const PanelSingleTicket = async ({
                   messageData={item}
                   ticketID={res.Data.Id}
                   key={item.Id}
+                  role="Admin"
                 />
               ) : (
                 <ChatBoxAdminCard
@@ -58,23 +59,26 @@ const PanelSingleTicket = async ({
                   repliable={false}
                   messageData={item}
                   ticketID={res.Data.Id}
+                  role="Admin"
                 />
               );
             } else if (res.Data.Status === 3) {
               return index % 2 === 0 ? (
-                <ChatBoxAdminCard
-                  key={item.Id}
-                  ticketTitle={res.Data.Title}
-                  repliable={false}
-                  messageData={item}
-                  ticketID={res.Data.Id}
-                />
-              ) : (
                 <ChatBoxUserCard
                   ticketTitle={res.Data.Title}
                   messageData={item}
                   ticketID={res.Data.Id}
                   key={item.Id}
+                  role="Admin"
+                />
+              ) : (
+                <ChatBoxAdminCard
+                  key={item.Id}
+                  ticketTitle={res.Data.Title}
+                  repliable={false}
+                  messageData={item}
+                  ticketID={res.Data.Id}
+                  role="Admin"
                 />
               );
             }
