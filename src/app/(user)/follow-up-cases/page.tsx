@@ -22,11 +22,6 @@ const FollowUpCases = ({
           <div>
             <SectionTitle title="پیگیری درخواست‌ها و شکایات" />
           </div>
-          {/*  buttons */}
-          <div className="flex overflow-hidden lg:hidden gap-2 items-stretch">
-            <HomeButton />
-            <AuthDialog />
-          </div>
         </div>
         {/* form */}
         <div className="flex flex-col items-stretch gap-6">

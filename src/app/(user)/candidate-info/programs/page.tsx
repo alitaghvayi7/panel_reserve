@@ -26,11 +26,6 @@ const ProgramsPage = async () => {
           <div>
             <SectionTitle title="برنامه و ایدوئولوژی" />
           </div>
-          {/*  buttons */}
-          <div className="flex overflow-hidden lg:hidden gap-2 items-stretch">
-            <HomeButton />
-            <AuthDialog />
-          </div>
         </div>
         <div className="mt-6 lg:mt-0 text-[12px] lg:text-[16px] text-primary-black">
           <div className="flex items-center gap-2">

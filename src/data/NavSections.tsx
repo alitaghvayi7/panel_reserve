@@ -1,10 +1,14 @@
 import {
+  AWARDS_ICON,
   COMMENT_ICON,
+  CV_ICON,
   PERSON_WITH_MARK_ICON,
+  PROGRAMS_ICON,
   TAX_ICON,
   VOTE_ICON,
 } from "@/components/assets/SVG/Icons";
 import { TNavSections } from "@/types";
+import { CameraIcon } from "lucide-react";
 
 export const NavSections: TNavSections[] = [
   {
@@ -47,6 +51,7 @@ export const CandidateInfoNav = [
     link: "/candidate-info/awards",
     image: "/Images/awards.png",
     description: "چه جایزه هایی استاد گرفته؟!",
+    miniIcon: <AWARDS_ICON />,
   },
   {
     id: 2,
@@ -54,6 +59,7 @@ export const CandidateInfoNav = [
     link: "/candidate-info/cv",
     image: "/Images/rezume.png",
     description: "رزومه استاد پزشکیان رو ببین!",
+    miniIcon: <CV_ICON />,
   },
   {
     id: 3,
@@ -61,5 +67,14 @@ export const CandidateInfoNav = [
     link: "/candidate-info/programs",
     image: "/Images/programs.png",
     description: "برنامه های اینده رو ببین",
+    miniIcon: <PROGRAMS_ICON />,
+  },
+  {
+    id: 4,
+    title: "تماس تصویری",
+    link: "/candidate-info/video-call",
+    image: "/Images/camera.svg",
+    description: "ارتباط با دکتر",
+    miniIcon: <CameraIcon color="#7D7D7D" />,
   },
 ];

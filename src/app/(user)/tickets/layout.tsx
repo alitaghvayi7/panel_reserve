@@ -22,11 +22,6 @@ const Layouyt = async ({ children }: { children: ReactNode }) => {
             <div>
               <SectionTitle title="پیشنهادات و انتقادات" />
             </div>
-            {/*  buttons */}
-            <div className="flex overflow-hidden lg:hidden gap-4 items-stretch">
-              <HomeButton />
-              <AuthDialog />
-            </div>
           </div>
           <div className="flex flex-col items-stretch gap-2">
             <div className="text-[14px] lg:text-[16px] text-primary-black">

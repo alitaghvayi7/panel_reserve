@@ -14,11 +14,6 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
   }
   return (
     <div className="flex flex-col items-stretch gap-6">
-      {/*  buttons */}
-      <div className="flex overflow-hidden lg:hidden gap-2 items-stretch self-end">
-        <HomeButton />
-        <AuthDialog />
-      </div>
       <>
         <AccountTabs />
       </>

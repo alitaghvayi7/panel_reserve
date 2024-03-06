@@ -129,10 +129,6 @@ export default async function News({
               </div>
             </div>
           </div> */}
-          <div className="flex overflow-hidden lg:hidden gap-2 items-stretch mr-auto">
-            <HomeButton />
-            <AuthDialog />
-          </div>
         </div>
 
         <div className="flex flex-col items-stretch gap-6">

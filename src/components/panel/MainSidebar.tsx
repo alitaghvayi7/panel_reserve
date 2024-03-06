@@ -10,7 +10,9 @@ const PanelMainSidebar = () => {
   //   console.log(pathname.split("/")[2]);
   return (
     <aside className="min-h-screen h-full flex flex-col items-stretch px-4 py-2 bg-[rgba(244,255,252,1)] whitespace-nowrap">
-      <div className="flex items-center justify-center p-5">logo</div>
+      <Link href={`/`} className="flex items-center justify-center p-5">
+        logo
+      </Link>
       <div className="border-b border-secondary-gray"></div>
       <div>
         <nav>

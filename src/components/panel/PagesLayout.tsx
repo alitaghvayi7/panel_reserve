@@ -1,4 +1,5 @@
 import { getPersianDate } from "@/lib/utils";
+import { PanelAccountMenuBar } from "./Menu";
 export const dynamic = "force-dynamic";
 
 const PanelPagesLayout = ({
@@ -21,9 +22,14 @@ const PanelPagesLayout = ({
             navbar
           )}
         </div>
-        <div className="flex items-center gap-2 text-[12px] font-medium text-third-black leading-none">
-          <span>تاریخ امروز</span>
-          <span>{date}</span>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 text-[12px] font-medium text-third-black leading-none">
+            <span>تاریخ امروز</span>
+            <span>{date}</span>
+          </div>
+          <div>
+            <PanelAccountMenuBar />
+          </div>
         </div>
       </header>
       <div className="flex flex-col items-stretch gap-4">{children}</div>

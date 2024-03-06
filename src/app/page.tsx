@@ -111,16 +111,16 @@ export default async function Home() {
           <nav>
             <div className="flex flex-col items-stretch gap-8 mt-10">
               <SectionTitle title="با دکتر پزشکیان بیشتر آشنا شوید" />
-              <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-6 xl:gap-y-0">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-6 xl:gap-y-0">
                 {CandidateInfoNav.map((item) => {
                   return (
-                    <li key={item.id}>
+                    <li key={item.id} className="xl:h-full">
                       <Link
                         href={item.link}
-                        className="flex items-center justify-between px-8 py-6 rounded-2xl bg-[rgba(243,242,252,1)] leading-none place-self-stretch"
+                        className="flex items-center justify-between px-8 xl:px-4 xl:gap-2 py-6 rounded-2xl bg-[rgba(243,242,252,1)] leading-[16px] place-self-stretch xl:h-full"
                       >
                         <div className="flex flex-col justify-center gap-6">
-                          <span className="text-[14px] xl:text-[16px] font-bold text-primary-black">
+                          <span className="text-[14px] xl:text-[14px] font-bold text-primary-black">
                             {item.title}
                           </span>
                           <p className="text-[12px] text-secondary-black">

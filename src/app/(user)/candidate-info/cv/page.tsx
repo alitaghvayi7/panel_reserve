@@ -60,11 +60,6 @@ const CVPage = async ({ searchParams }: { searchParams: TSearchParams }) => {
           <div>
             <SectionTitle title="رزومه" />
           </div>
-          {/*  buttons */}
-          <div className="flex overflow-hidden lg:hidden gap-2 items-stretch">
-            <HomeButton />
-            <AuthDialog />
-          </div>
         </div>
         <div className="mt-6 lg:mt-0">
           <p className="text-[14px] lg:text-[16px] text-primary-black">

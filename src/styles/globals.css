@@ -5,14 +5,14 @@
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 .custom-scroll-bar {
-  scrollbar-width: auto;
+  scrollbar-width: 30px;
   scrollbar-color: #e1e1e2 #ffffff;
   /* scrollbar-color: inherit; */
 }
 
 /* Chrome, Edge, and Safari */
 .custom-scroll-bar::-webkit-scrollbar {
-  width: 10px;
+  width: 30px;
 }
 
 .custom-scroll-bar::-webkit-scrollbar-track {

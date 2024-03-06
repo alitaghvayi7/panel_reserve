@@ -63,13 +63,8 @@ const AwardsPage = async ({
       <div className="flex flex-col lg:flex-row lg:gap-10">
         {/* title */}
         <div className="flex items-center justify-between">
-          <div>
+          <div >
             <SectionTitle title="جوایز و افتخارات" />
-          </div>
-          {/*  buttons */}
-          <div className="flex overflow-hidden lg:hidden gap-2 items-stretch">
-            <HomeButton />
-            <AuthDialog />
           </div>
         </div>
         <div className="mt-6 lg:mt-0">

@@ -3,9 +3,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { NavSections } from "@/data/NavSections";
+import { CandidateInfoNav, NavSections } from "@/data/NavSections";
 import { HomeIcon, MenuIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -42,6 +43,20 @@ export function NavigationHamburgerMenu() {
             </DropdownMenuItem>
           );
         })}
+        <DropdownMenuSeparator />
+        {CandidateInfoNav.map((item) => (
+          <DropdownMenuItem
+            onClick={() => router.push(item.link)}
+            key={item.id}
+          >
+            <div className="flex items-center gap-2 leading-none w-full">
+              <span className="w-[24px] h-[24px] flex items-center justify-center">
+                {item.miniIcon}
+              </span>
+              <span className="pt-1">{item.title}</span>
+            </div>
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

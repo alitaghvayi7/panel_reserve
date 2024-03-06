@@ -14,7 +14,7 @@ const HomePageCarousel = () => {
   return (
     <div className="">
       <div className="h-[414px] lg:h-[512px] rounded-2xl overflow-hidden relative">
-        <div className="absolute z-[100] left-[20px] top-[70px] sm:top-[30px]">
+        <div className="absolute z-[40] left-[20px] top-[70px] sm:top-[30px]">
           <AuthDialog />
         </div>
         <Swiper
