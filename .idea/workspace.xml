@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0390587c-38a6-4f86-944f-6907817d534a" name="Changes" comment="v" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="doctor" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupnpm">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2ej6VL8BEBWgEWFNE4HG4K34tvY" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "doctor",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\root\Desktop\projects\namayandeh_yar_front\src\app\(user)" />
+      <recent name="C:\Users\root\Desktop\projects\namayandeh_yar_front\src\layouts" />
+      <recent name="C:\Users\root\Desktop\projects\namayandeh_yar_front\src\components\Providers" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0390587c-38a6-4f86-944f-6907817d534a" name="Changes" comment="" />
+      <created>1712405675767</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712405675767</updated>
+      <workItem from="1712405679695" duration="27660000" />
+      <workItem from="1712609046834" duration="6670000" />
+      <workItem from="1712731119809" duration="2227000" />
+      <workItem from="1713003972764" duration="111000" />
+      <workItem from="1713166419089" duration="15201000" />
+      <workItem from="1713249636569" duration="18206000" />
+      <workItem from="1713344052111" duration="152000" />
+      <workItem from="1713350040886" duration="334000" />
+      <workItem from="1713595657356" duration="3962000" />
+      <workItem from="1713779428383" duration="3328000" />
+      <workItem from="1716983431727" duration="2031000" />
+    </task>
+    <task id="LOCAL-00001" summary="custom project for doctors">
+      <option name="closed" value="true" />
+      <created>1712417064465</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712417064465</updated>
+    </task>
+    <task id="LOCAL-00002" summary="home page">
+      <option name="closed" value="true" />
+      <created>1712424489410</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712424489410</updated>
+    </task>
+    <task id="LOCAL-00003" summary="footer">
+      <option name="closed" value="true" />
+      <created>1712443447272</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712443447272</updated>
+    </task>
+    <task id="LOCAL-00004" summary="responsive homepage">
+      <option name="closed" value="true" />
+      <created>1712445216834</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712445216834</updated>
+    </task>
+    <task id="LOCAL-00005" summary="articles page">
+      <option name="closed" value="true" />
+      <created>1712445723032</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712445723032</updated>
+    </task>
+    <task id="LOCAL-00006" summary="articles page">
+      <option name="closed" value="true" />
+      <created>1712496921030</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712496921030</updated>
+    </task>
+    <task id="LOCAL-00007" summary="articles page">
+      <option name="closed" value="true" />
+      <created>1712497170082</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712497170082</updated>
+    </task>
+    <task id="LOCAL-00008" summary="achivements page">
+      <option name="closed" value="true" />
+      <created>1712615691705</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712615691706</updated>
+    </task>
+    <task id="LOCAL-00009" summary="responsibilities page">
+      <option name="closed" value="true" />
+      <created>1712733273226</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712733273226</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add font">
+      <option name="closed" value="true" />
+      <created>1713004039973</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713004039973</updated>
+    </task>
+    <task id="LOCAL-00011" summary="v">
+      <option name="closed" value="true" />
+      <created>1713169021189</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713169021189</updated>
+    </task>
+    <task id="LOCAL-00012" summary="v">
+      <option name="closed" value="true" />
+      <created>1713178103920</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713178103921</updated>
+    </task>
+    <task id="LOCAL-00013" summary="v">
+      <option name="closed" value="true" />
+      <created>1713178121388</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713178121388</updated>
+    </task>
+    <task id="LOCAL-00014" summary="v">
+      <option name="closed" value="true" />
+      <created>1713184200669</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713184200669</updated>
+    </task>
+    <task id="LOCAL-00015" summary="v">
+      <option name="closed" value="true" />
+      <created>1713267609241</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713267609241</updated>
+    </task>
+    <task id="LOCAL-00016" summary="v">
+      <option name="closed" value="true" />
+      <created>1713781290040</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713781290040</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="custom project for doctors" />
+    <MESSAGE value="home page" />
+    <MESSAGE value="footer" />
+    <MESSAGE value="responsive homepage" />
+    <MESSAGE value="articles page" />
+    <MESSAGE value="achivements page" />
+    <MESSAGE value="responsibilities page" />
+    <MESSAGE value="add font" />
+    <MESSAGE value="v" />
+    <option name="LAST_COMMIT_MESSAGE" value="v" />
+  </component>
+</project>
